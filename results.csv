@@ -1,0 +1,254 @@
+task_id,category,model_id,model_label,status,attempts,first_try_ok,latency_s,tokens_in,tokens_out,response,error,timestamp
+T01,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:39:54
+T01,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,1.07,259,558,"- Net revenue rose 8% to CHF 412 million, driven primarily by contract logistics for pharmaceutical clients.  
+- Operating margin (EBIT) improved to 7.4% (up from 6.1%) as the new Basel warehouse reached full capacity.  
+- Road‑freight division fell 3% due to lower automotive volumes and rising driver wages.  
+- The company invested CHF 38 million (CHF 22 m for warehouse automation, CHF 9 m for a new transport management system) and added 90 employees, while CO₂ per tonne‑kilometre dropped 11% thanks to 40 electric trucks.  
+- For 2026, management targets 4–6% revenue growth, plans an Austrian market entry via acquisition, and proposes a CHF 2.40 dividend per share.",,2026-10-29T19:39:55
+T01,Summarize,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,13.97,289,478,"- Net revenue increased 8% to CHF 412 million; EBIT margin expanded from 6.1% to 7.4% as the Basel automated warehouse reached full capacity in Q2.  
+- Contract logistics (pharma) drove growth, while road freight revenue declined 3% amid automotive volume weakness and higher driver wages.  
+- CHF 38 million invested in 2025: CHF 22 million for warehouse automation, CHF 9 million for a new transport management system (go-live mid‑2026).  
+- CO₂ emissions per tonne‑kilometre fell 11% after adding 40 electric trucks; headcount rose to 2,240 (+90).  
+- 2026 guidance: 4–6% revenue growth, entry into Austria via a small acquisition, and a proposed dividend of CHF 2.40 per share (up from CHF 2.10).",,2026-10-29T19:38:34
+T01,Summarize,recursive/flint-v1.0:free,Mid (Recursive),ok,1,yes,13.71,245,1784,"- **Revenue & margin:** Net revenue rose 8% to CHF 412 million, led by pharmaceutical contract logistics; EBIT margin improved to 7.4% as the Basel automated warehouse reached full capacity.
+
+- **Road freight pressure:** Revenue declined 3% amid lower automotive volumes and rising driver wages.
+
+- **Capex & efficiency:** CHF 38 million invested (CHF 22M in warehouse automation; CHF 9M in transport management system); CO2 emissions per tonne-km reduced 11% via 40 new electric trucks.
+
+- **Workforce:** Headcount increased to 2,240 employees.
+
+- **Outlook & capital return:** FY2026 revenue guidance of 4–6%; planned Austrian market entry via small acquisition; proposed dividend of CHF 2.40 per share (prior year: CHF 2.10).",,2026-10-29T19:38:48
+T02,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:42:01
+T02,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,2.24,154,1304,"**Decisions from Project Falcon weekly sync**
+
+| # | Decision | Owner | Due Date |
+|---|----------|-------|----------|
+| 1 | Drop Vendor C from the shortlist (no Swiss data centre) | Maria | 14 Nov (aligned with RFP deadline) |
+| 2 | Send RFP to vendors A and B | Thomas | 14 Nov |
+| 3 | Update the business case to include the additional CHF 50 k consulting support | Lena | 21 Nov |
+| 4 | Confirm the go‑live date remains 1 March (no change) | Project Falcon (Steering Committee) | 1 March |
+| 5 | Book the steering committee for early December | Maria | 7 Nov |
+
+Each item includes a clear action, the responsible person, and the target completion date.",,2026-10-29T19:42:03
+T02,Summarize,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,6.15,164,256,"| # | Decision | Owner | Due Date |
+|---|----------|-------|----------|
+| 1 | Drop Vendor C from shortlist (no Swiss data centre) | Maria (decision maker) | Immediate / 14 Nov (aligned with RFP send) |
+| 2 | Send RFP to Vendors A and B | Thomas | 14 Nov |
+| 3 | Update business case with additional CHF 50k consulting budget (CFO approved) | Lena | 21 Nov |
+| 4 | Confirm go-live date remains 1 March (no change) | Project lead (implicit) | N/A – date fixed |
+| 5 | Book steering committee meeting for early December | Maria | 7 Nov |",,2026-10-29T19:40:01
+T02,Summarize,recursive/flint-v1.0:free,Mid (Recursive),ok,2,no,9.4,140,1510,"## Project Falcon – Weekly Sync: Decisions & Actions
+
+### Decisions
+| Decision | Owner | Due Date |
+|---|---|---|
+| Drop Vendor C from shortlist (no Swiss data centre) | Maria | Not specified — agreed |
+| Go-live date stays on 1 March | — | N/A (no change) |
+
+### Action Items
+| Action | Owner | Due Date |
+|---|---|---|
+| Send RFP to Vendors A and B | Thomas | 14 Nov |
+| Update business case with CHF 50k consulting budget approval | Lena | 21 Nov |
+| Book steering committee for early December | Maria | 7 Nov |
+
+### Deferred
+- **Training approach** — no decision yet; revisit next week.
+
+**Notes:**
+- The Vendor C drop was an agreement, so no separate due date applies — flagged for removal from shortlist.
+- The go-live date decision required no owner assignment since it was merely confirmed as unchanged.",,2026-10-29T19:40:56
+T03,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:43:37
+T03,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,3,no,1.66,246,771,"Mid-sized European manufacturers are piloting generative AI, yet only 14% have moved to production. Key barriers include ROI uncertainty, data privacy, and skill gaps. Success requires executive sponsorship and clear data governance. Analysts predict the gap will narrow, but without it, firms risk ""pilot fatigue"" and stalled value delivery.",,2026-10-29T19:44:46
+T03,Summarize,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,18.42,263,565,"While 62% of mid-sized European manufacturers have piloted generative AI, only 14% deploy it in production. Common uses include customer service and technical documentation. Key barriers are unclear ROI (58%), data privacy (51%), and skills gaps (47%). Production success correlates with dedicated budgets, executive sponsorship, and strict data governance. Analysts forecast the pilot-production gap will close within two years as EU hosting expands, but warn that absent governance frameworks risk ""pilot fatigue.""",,2026-10-29T19:42:22
+T03,Summarize,recursive/flint-v1.0:free,Mid (Recursive),ok,1,yes,9.59,232,1677,"Mid-sized European manufacturers tested generative AI widely (62%) but deployed rarely (14%). Key barriers: unclear ROI, data privacy, and skills gaps. Production success requires dedicated budget, executive sponsor, and governance. Experts predict narrowing gap soon, but warn of ""pilot fatigue"" without governance.",,2026-10-29T19:42:31
+T04,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:46:05
+T04,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,4.27,162,1534,"Based on the reviews provided, here are the top 3 recurring themes:
+
+**1. Support Quality**
+This is the most consistently positive theme across the reviews. Multiple customers highlight the efficiency and expertise of the support team.
+*   **Review 2:** ""Support answered quickly and solved our issue the same day.""
+*   **Review 6:** ""Support team is friendly and knowledgeable.""
+*   **Review 10:** ""Whenever we call support, someone helps us right away.""
+
+**2. Pricing and Cost Transparency**
+A major point of dissatisfaction is the financial aspect of the product. Three reviews specifically criticize the pricing structure.
+*   **Review 3:** ""The price went up 20% at renewal without any warning.""
+*   **Review 7:** ""Too expensive for what we use; we only need half the modules.""
+*   **Review 9:** ""Pricing model is hard to understand.""
+
+**3. Implementation and Onboarding Friction**
+Several reviews point to difficulties in getting the product up and running, often requiring extra effort or external help.
+*   **Review 1:** ""Setting it up took our IT team three weeks.""
+*   **Review 4:** ""Onboarding was confusing; the documentation is outdated.""
+*   **Review 8:** ""Implementation was painful, we needed external consultants.""",,2026-10-29T19:46:09
+T04,Summarize,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,9.24,169,344,"Based on the 10 reviews provided, the **top 3 recurring themes** are:
+
+### 1. Difficult Implementation & Onboarding (4 mentions)
+*   **Review 1:** ""Setting it up took our IT team three weeks.""
+*   **Review 4:** ""Onboarding was confusing; the documentation is outdated.""
+*   **Review 8:** ""Implementation was painful, we needed external consultants.""
+*   *Implicit in Review 7/9:* Complexity driving need for consultants/confusion.
+
+### 2. Positive Support Experience (3 mentions)
+*   **Review 2:** ""Support answered quickly and solved our issue the same day.""
+*   **Review 6:** ""Support team is friendly and knowledgeable.""
+*   **Review 10:** ""Whenever we call support, someone helps us right away.""
+
+### 3. Pricing Concerns: Cost, Transparency & Communication (3 mentions)
+*   **Review 3:** ""The price went up 20% at renewal without any warning."" (Communication/Value)
+*   **Review 7:** ""Too expensive for what we use; we only need half the modules."" (Value/Packaging)
+*   **Review 9:** ""Pricing model is hard to understand."" (Transparency)
+
+***
+
+**Honorable Mention (Did not make Top 3):**
+*   **Product Reliability/Uptime** (1 explicit mention: Review 5).",,2026-10-29T19:44:55
+T04,Summarize,recursive/flint-v1.0:free,Mid (Recursive),ok,1,yes,4.07,149,638,"Based on the 10 reviews, the top 3 recurring themes are:
+
+1. **Support responsiveness and quality**  
+   Multiple reviews highlight fast, helpful, and friendly support:  
+   - “Support answered quickly and solved our issue the same day.”  
+   - “Support team is friendly and knowledgeable.”  
+   - “Whenever we call support, someone helps us right away.”  
+   → **Recurring positive theme.**
+
+2. **Implementation, onboarding, and setup challenges**  
+   Several customers struggled during deployment:  
+   - “Great features, but setting it up took our IT team three weeks.”  
+   - “Onboarding was confusing; the documentation is outdated.”  
+   - “Implementation was painful, we needed external consultants.”  
+   → **Recurring pain point.**
+
+3. **Pricing concerns and complexity**  
+   Pricing came up repeatedly as an issue:  
+   - “The price went up 20% at renewal without any warning.”  
+   - “Too expensive for what we use; we only need half the modules.”  
+   - “Pricing model is hard to understand.”  
+   → **Recurring negative theme.**
+
+While the product’s reliability was praised once, the strongest recurring themes are **support quality**, **implementation difficulty**, and **pricing**.",,2026-10-29T19:44:59
+T05,Analyze,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:49:04
+T05,Analyze,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,5.88,165,1981,"**Strengths**
+*   **Stable Revenue Base:** The company has long-term contracts with three large chemical clients, which account for 60% of its revenue, providing financial stability.
+*   **Specialized Expertise:** It holds a strong reputation for reliability and dangerous-goods expertise, positioning it as a preferred partner for specific industries.
+*   **Asset Ownership:** Rheintal Freight operates its own fleet of 180 trucks, giving it full control over its capacity and operations.
+
+**Weaknesses**
+*   **Outdated Fleet:** The average age of the trucks is 9 years, which may result in higher maintenance costs and lower fuel efficiency compared to newer competitors.
+*   **Lack of Digital Integration:** The company does not have an online booking platform, forcing orders to be placed via phone and email, which reduces efficiency.
+*   **Labor Shortage:** There is a shortage of qualified truck drivers in the region, limiting the company's ability to scale operations.
+
+**Opportunities**
+*   **Market Expansion:** Growing demand for cross-border e-commerce deliveries into Germany and Austria presents a significant opportunity to increase market share.
+*   **Green Transition:** New EU and Swiss rules favoring low-emission transport from 2027 offer a chance to modernize the fleet and gain a competitive advantage in sustainability.
+*   **Client Upselling:** The strong reputation for reliability can be leveraged to upsell additional services to its existing large chemical clients.
+
+**Threats**
+*   **Competitor Technology:** Competitors are introducing real-time shipment tracking, which Rheintal Freight lacks and could lose customers to regarding transparency.
+*   **Regulatory Pressure:** New EU and Swiss rules favoring low-emission transport may increase operational costs or require fleet upgrades if not addressed quickly.
+*   **Driver Shortage:** The regional shortage of qualified truck drivers threatens the company's ability to meet growing demand and maintain service levels.",,2026-10-29T19:49:10
+T05,Analyze,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,8.35,179,474,"**SWOT Analysis – Rheintal Freight GmbH**
+
+**Strengths (Internal, Positive)**
+*   **Specialized Expertise & Reputation:** Strong market position in dangerous-goods handling with a proven track record of reliability.
+*   **Revenue Stability:** Long-term contracts with three large chemical clients secure 60% of revenue, providing predictable cash flow.
+*   **Operational Control:** Own fleet of 180 trucks ensures capacity availability and direct quality control over specialized chemical transports.
+
+**Weaknesses (Internal, Negative)**
+*   **Client Concentration Risk:** 60% of revenue depends on only three chemical clients, creating high vulnerability to contract loss.
+*   **Digitalization Gap:** Absence of an online booking platform (reliance on phone/email) creates operational inefficiency and fails to meet modern customer expectations.
+*   **Aging Asset Base:** Fleet average age of 9 years implies rising maintenance costs and likely non-compliance with upcoming 2027 low-emission regulations.
+
+**Opportunities (External, Positive)**
+*   **Cross-Border E-Commerce Growth:** Rising demand for deliveries into Germany and Austria offers a diversification channel away from chemical dependence.
+*   **Regulatory First-Mover Advantage:** Early investment in low-emission vehicles (before 2027 mandates) could differentiate Rheintal against slower competitors.
+*   **Digital Service Expansion:** Building a booking/tracking platform would meet the growing market expectation for real-time visibility and streamline order intake.
+
+**Threats (External, Negative)**
+*   **Competitive Technology Displacement:** Competitors rolling out real-time shipment tracking risk making Rheintal’s analog booking process obsolete.
+*   **Regulatory Compliance Costs:** Mandatory low-emission transport rules from 2027 require significant capital expenditure on fleet renewal within a short timeframe.
+*   **Driver Shortage:** Regional lack of qualified drivers threatens the ability to operate the current 180-truck fleet and limits capacity for new e-commerce growth.",,2026-10-29T19:46:18
+T05,Analyze,recursive/flint-v1.0:free,Mid (Recursive),failed,3,no,14.38,,,,empty response,2026-10-29T19:47:58
+T06,Analyze,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,1,no,,,,,"Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1793318400000'}, 'limit_source': 'openro",2026-10-29T19:49:30
+T06,Analyze,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,7.43,144,662,"Here are the step-by-step calculations:
+
+### 1. Total Addressable Market (TAM)
+**Definition:** Revenue opportunity if 100% of Swiss SMEs become customers.
+
+**Calculation:**
+\[
+\text{TAM} = \text{Total Swiss SMEs} \times \text{Annual Subscription Price}
+\]
+\[
+\text{TAM} = 600,000 \times \text{CHF } 600 = \textbf{CHF 360,000,000}
+\]
+
+---
+
+### 2. Serviceable Available Market (SAM)
+**Definition:** Revenue opportunity within the specific geographic segment the startup can currently serve (German-speaking region = 65% of total SMEs).
+
+**Calculation:**
+\[
+\text{SAM (in companies)} = \text{Total Swiss SMEs} \times 65\%
+\]
+\[
+\text{SAM (in companies)} = 600,000 \times 0.65 = 390,000 \text{ companies}
+\]
+
+\[
+\text{SAM (in CHF)} = \text{SAM (in companies)} \times \text{Annual Subscription Price}
+\]
+\[
+\text{SAM (in CHF)} = 390,000 \times \text{CHF } 600 = \textbf{CHF 234,000,000}
+\]
+
+---
+
+### 3. Serviceable Obtainable Market (SOM)
+**Definition:** Realistic revenue target capturing 3% of the SAM within 3 years.
+
+**Calculation:**
+\[
+\text{SOM (in companies)} = \text{SAM (in companies)} \times 3\%
+\]
+\[
+\text{SOM (in companies)} = 390,000 \times 0.03 = 11,700 \text{ companies}
+\]
+
+\[
+\text{SOM (in CHF)} = \text{SOM (in companies)} \times \text{Annual Subscription Price}
+\]
+\[
+\text{SOM (in CHF)} = 11,700 \times \text{CHF } 600 = \textbf{CHF 7,020,000}
+\]
+
+---
+
+### Summary
+| Metric | Companies | Value (CHF) |
+| :--- | :--- | :--- |
+| **TAM** | 600,000 | 360,000,000 |
+| **SAM** | 390,000 | 234,000,000 |
+| **SOM** | 11,700 | **7,020,000** |
+
+**Final SOM: CHF 7,020,000**",,2026-10-29T19:49:17
+T06,Analyze,recursive/flint-v1.0:free,Mid (Recursive),ok,1,yes,11.11,106,1818,"**Calculations:**
+
+- **TAM** (Total Addressable Market) = All Swiss SMEs × Annual subscription price  
+  = 600,000 × CHF 600  
+  = **CHF 360,000,000**
+
+- **SAM** (Serviceable Addressable Market) = SMEs in German-speaking region × Price  
+  = 600,000 × 65% × CHF 600  
+  = 390,000 × CHF 600  
+  = **CHF 234,000,000**
+
+- **SOM** (Serviceable Obtainable Market) = 3% of SAM  
+  = 3% × CHF 234,000,000  
+  = **CHF 7,020,000**
+
+**Final SOM = CHF 7,020,000**  
+(approximately **CHF 7.02 million**)",,2026-10-29T19:49:28

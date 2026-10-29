@@ -3,8 +3,8 @@ models:
     label: Large (NVIDIA)
   - id: recursive/flint-v1.0:free
     label: Mid (Recursive)
-  - id: google/gemma-4-31b-it:free
-    label: Mid open (Google)
+  - id: xingchen-agi/xing4.0-29b-a4b:free
+    label: Mid open (Xingchen)
   - id: liquid/lfm-2.5-2.6b:free
     label: Small (Liquid AI)
 
