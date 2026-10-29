@@ -1,0 +1,11 @@
+models:
+  - id: nvidia/nemotron-3-ultra-550b-a55b:free
+    label: Large (NVIDIA)
+  - id: recursive/flint-v1.0:free
+    label: Mid (Recursive)
+  - id: google/gemma-4-31b-it:free
+    label: Mid open (Google)
+  - id: liquid/lfm-2.5-2.6b:free
+    label: Small (Liquid AI)
+
+judge: nvidia/nemotron-3.5-super-vl:free
