@@ -1,5 +1,10 @@
 """
-score.py - grades every answer in results.csv and saves scores to scores.csv.
+score.py - grades every answer in results.csv and saves scores to scores_v2.csv.
+
+Version 2 (2 Nov): the judge now CHECKS instead of RATES. It marks each required
+point in the answer key as covered / missing, plus one check for format and
+length. Score = share of checks passed. (Version 1 asked for a 1-5 rating and
+agreed with the human check on only 2 of 5 cases; its scores stay in scores.csv.)
 
 - Automatic checks for tasks with one right answer (T06, T09, T11, T12).
 - An LLM judge (from config.yaml) for all other tasks.
@@ -20,11 +25,11 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 # ---------- Settings you may change ----------
-TEST_MODE = False       # True = only score the first 3 answers that need the judge
+TEST_MODE = True       # True = only score the first 3 answers that need the judge
 MAX_TOKENS = 4000      # judge is a "thinking" model: needs room to reason AND reply
 MAX_ATTEMPTS = 3
 WAIT_SECONDS = 30
-SCORES_FILE = "scores.csv"
+SCORES_FILE = "scores_v2.csv"   # version 1 results stay in scores.csv
 # ---------------------------------------------
 
 # Expected numbers for numeric tasks (score = share of numbers found)
@@ -143,28 +148,42 @@ def score_classification(reference, answer):
 # ---------------- LLM judge ----------------
 
 def parse_judge_reply(content, needed_key):
-    """Find the JSON object in the judge's reply that contains the needed key."""
-    candidates = re.findall(r"\{[^{}]*\}", content, flags=re.DOTALL)
-    for text in reversed(candidates):          # the final answer is usually last
+    """Find the JSON object in the judge's reply that contains the needed key
+    (works even when the JSON contains a nested list, as the checklist does)."""
+    decoder = json.JSONDecoder()
+    found = None
+    for i, char in enumerate(content):
+        if char != "{":
+            continue
         try:
-            data = json.loads(text)
+            data, _ = decoder.raw_decode(content[i:])
         except json.JSONDecodeError:
             continue
-        if needed_key in data:
-            return data
-    return None
+        if isinstance(data, dict) and needed_key in data:
+            found = data                       # keep the last one: the final answer
+    return found
 
 
-def judge(task, answer):
+def judge(task, answer, limit_ok=None):
+    """limit_ok: None if the task has no word limit, else True/False from our own word count."""
     is_pass_fail = task["grading_type"] == "pass_fail"
     if is_pass_fail:
         instructions = ('Decide PASS or FAIL using the criteria. Reply with JSON only: '
                         '{"pass": true or false, "reason": "one short sentence"}')
     else:
-        instructions = ('Score the answer from 1 (poor) to 5 (excellent) against the answer key: '
-                        'coverage of required points, accuracy (no invented facts), and following '
-                        'the instruction (format, length). Reply with JSON only: '
-                        '{"score": 1-5, "reason": "one short sentence"}')
+        instructions = (
+            'Grade with a checklist, not an overall impression.\n'
+            'Step 1: split the ANSWER KEY into its separate required points '
+            '(leave out notes about format or length).\n'
+            'Step 2: for each point, decide whether the answer covers it (true/false). '
+            'Different wording is fine if the meaning is the same.\n'
+            'Step 3: decide whether the answer follows the format and length asked for '
+            'in the TASK INSTRUCTION (format_ok true/false).\n'
+            'Rules: do NOT deduct for anything that the instruction and answer key did not ask for. '
+            'A "must not" rule in the answer key counts as one point, like any other.\n'
+            'Reply with JSON only: {"points": [{"point": "short label", "covered": true}], '
+            '"format_ok": true, "reason": "one short sentence naming what is missing, if anything"}'
+        )
     prompt = (
         "You are a strict, fair grader of business tasks.\n\n"
         f"TASK INSTRUCTION:\n{task['prompt']}\n\n"
@@ -183,13 +202,19 @@ def judge(task, answer):
                 temperature=0,
             )
             content = (r.choices[0].message.content or "") if r.choices else ""
-            data = parse_judge_reply(content, "pass" if is_pass_fail else "score")
-            if data is not None:
+            data = parse_judge_reply(content, "pass" if is_pass_fail else "points")
+            if data is not None and (is_pass_fail or data.get("points")):
                 reason = str(data.get("reason", ""))[:200]
                 if is_pass_fail:
                     return (100 if str(data.get("pass")).lower() == "true" else 0), reason, None
-                score = max(1, min(5, int(float(data["score"]))))
-                return round((score - 1) / 4 * 100), f"{score}/5 - {reason}", None
+                points = data["points"]
+                covered = sum(1 for p in points if str(p.get("covered")).lower() == "true")
+                format_ok = str(data.get("format_ok")).lower() == "true"
+                if limit_ok is False:          # our own word count overrules the judge
+                    format_ok = False
+                pct = round(100 * (covered + format_ok) / (len(points) + 1))
+                summary = f"{covered}/{len(points)} points, format {'ok' if format_ok else 'NOT ok'}"
+                return pct, f"{summary} - {reason}", None
             # OpenRouter sometimes hides the real error inside an empty response
             hidden = getattr(r, "error", None) or (getattr(r, "model_extra", None) or {}).get("error")
             if hidden:
@@ -237,7 +262,8 @@ for row in sorted(results, key=lambda r: (r["task_id"], r["model_id"])):
             continue
         judge_calls += 1
         print(f"Judging {row['task_id']} | {row['model_label']} ... (can take up to a minute)")
-        pct, reason, problem = judge(task, answer)
+        limit_ok = None if not limit else words <= limit
+        pct, reason, problem = judge(task, answer, limit_ok)
         if problem == "daily_limit":
             print("\nDaily free limit reached. Run again tomorrow - finished scores are kept.")
             break
