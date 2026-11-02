@@ -20,8 +20,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 # ---------- Settings you may change ----------
-TEST_MODE = True       # True = only score the first 3 answers that need the judge
-MAX_TOKENS = 1500
+TEST_MODE = False       # True = only score the first 3 answers that need the judge
+MAX_TOKENS = 4000      # judge is a "thinking" model: needs room to reason AND reply
 MAX_ATTEMPTS = 3
 WAIT_SECONDS = 30
 SCORES_FILE = "scores.csv"
@@ -62,7 +62,8 @@ scores = {}
 if os.path.exists(SCORES_FILE):
     with open(SCORES_FILE, encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            if row["method"] != "judge_error":
+            # re-check failed judge calls and answers that were missing last time
+            if row["method"] not in ("judge_error", "no_answer"):
                 scores[(row["task_id"], row["model_id"])] = row
 
 
@@ -141,6 +142,19 @@ def score_classification(reference, answer):
 
 # ---------------- LLM judge ----------------
 
+def parse_judge_reply(content, needed_key):
+    """Find the JSON object in the judge's reply that contains the needed key."""
+    candidates = re.findall(r"\{[^{}]*\}", content, flags=re.DOTALL)
+    for text in reversed(candidates):          # the final answer is usually last
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError:
+            continue
+        if needed_key in data:
+            return data
+    return None
+
+
 def judge(task, answer):
     is_pass_fail = task["grading_type"] == "pass_fail"
     if is_pass_fail:
@@ -169,15 +183,25 @@ def judge(task, answer):
                 temperature=0,
             )
             content = (r.choices[0].message.content or "") if r.choices else ""
-            match = re.search(r"\{.*\}", content, flags=re.DOTALL)
-            if match:
-                data = json.loads(match.group(0))
+            data = parse_judge_reply(content, "pass" if is_pass_fail else "score")
+            if data is not None:
                 reason = str(data.get("reason", ""))[:200]
                 if is_pass_fail:
-                    return (100 if data.get("pass") in (True, "true", "True") else 0), reason, None
+                    return (100 if str(data.get("pass")).lower() == "true" else 0), reason, None
                 score = max(1, min(5, int(float(data["score"]))))
                 return round((score - 1) / 4 * 100), f"{score}/5 - {reason}", None
-            last_error = "judge gave no usable JSON"
+            # OpenRouter sometimes hides the real error inside an empty response
+            hidden = getattr(r, "error", None) or (getattr(r, "model_extra", None) or {}).get("error")
+            if hidden:
+                last_error = f"OpenRouter error: {str(hidden)[:200]}"
+                print(f"   ...{last_error}")
+                if "per-day" in last_error.lower() or "per day" in last_error.lower():
+                    return None, last_error, "daily_limit"
+            else:
+                finish = r.choices[0].finish_reason if r.choices else "none"
+                snippet = content.strip().replace("\n", " ")[:80] or "(empty)"
+                last_error = f"judge gave no usable JSON (finish: {finish}, reply: {snippet})"
+                print(f"   ...{last_error}")
         except Exception as e:
             last_error = str(e)[:200]
             if "per-day" in last_error.lower() or "per day" in last_error.lower():
@@ -212,6 +236,7 @@ for row in sorted(results, key=lambda r: (r["task_id"], r["model_id"])):
         if TEST_MODE and judge_calls >= 3:
             continue
         judge_calls += 1
+        print(f"Judging {row['task_id']} | {row['model_label']} ... (can take up to a minute)")
         pct, reason, problem = judge(task, answer)
         if problem == "daily_limit":
             print("\nDaily free limit reached. Run again tomorrow - finished scores are kept.")
@@ -235,7 +260,7 @@ for row in sorted(results, key=lambda r: (r["task_id"], r["model_id"])):
     save_scores()
     print(f"{row['task_id']} | {row['model_label']} | {method} | {pct}% | {reason[:70]}")
 
-done = sum(1 for s in scores.values() if s["method"] != "judge_error")
+done = sum(1 for s in scores.values() if s["method"] not in ("judge_error", "no_answer"))
 print(f"\nScored {done} answers. Saved in {SCORES_FILE}.")
 if TEST_MODE:
     print("TEST MODE was on: only 3 judge calls were made.")
