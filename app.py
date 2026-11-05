@@ -259,12 +259,22 @@ n_tasks = results["task_id"].nunique()
 
 # ---------------- Page areas (shown in this order) ----------------
 header_area = st.container()
+results_heading = st.container()
 controls_area = st.container()
 
 # ---------------- Controls ----------------
+# The settings box title shows the current settings, so they are always visible without opening it
+_ss = st.session_state
+_total = (_ss.w_quality + _ss.w_risk + _ss.w_availability + _ss.w_speed) or 1
+settings_label = (
+    f"⚙️  Settings: Quality {100 * _ss.w_quality / _total:.0f}% · Risk {100 * _ss.w_risk / _total:.0f}% · "
+    f"Availability {100 * _ss.w_availability / _total:.0f}% · Speed {100 * _ss.w_speed / _total:.0f}% · "
+    f"{_ss.users * _ss.tasks_per_day * _ss.days:,} tasks/yr · threshold {_ss.threshold} pts · "
+    f"knock-out {'on' if _ss.knockout else 'off'}  (tap to change)"
+)
+
 with controls_area:
-    st.markdown('<div id="settings"></div>', unsafe_allow_html=True)   # jump target for "Change settings"
-    with st.expander("⚙️  Adjust client priorities and scale-up scenario", expanded=False):
+    with st.expander(settings_label, expanded=False):
         p_col, s_col = st.columns(2)
         with p_col:
             st.markdown("**Client priorities**")
@@ -401,11 +411,8 @@ with header_area:
 """)
 
 # ---------------- Results ----------------
-st.markdown('<div class="section">Explore the results</div>', unsafe_allow_html=True)
-st.markdown(f'<div class="settings-bar"><b>Current settings:</b> {mix} · {tasks_per_year:,} tasks/year '
-            f'({users:,} users × {tasks_per_day}/day × {days} days) · threshold {threshold} pts · '
-            f'knock-out {"on" if knockout else "off"} &nbsp; <a href="#settings">⚙️ Change settings ↑</a></div>',
-            unsafe_allow_html=True)
+with results_heading:
+    st.markdown('<div class="section">Explore the results</div>', unsafe_allow_html=True)
 
 tab_comp, tab_cost, tab_cat, tab_answers, tab_method = st.tabs(
     ["Comparison", "Score vs cost", "By category", "Answers", "Method & limits"])
