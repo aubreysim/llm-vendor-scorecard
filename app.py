@@ -97,10 +97,14 @@ st.markdown(f"""
   /* keep the tab bar visible while scrolling */
   .stTabs [data-baseweb="tab-list"] {{position: sticky; top: 0; z-index: 50; background: #fcfcfb;
                                       padding-top: 0.3rem;}}
-  .settings-bar {{font-size: 0.85rem; color: {INK}; background: #f3f2ef; border-radius: 6px;
-                   padding: 0.5rem 0.8rem; margin: 0.3rem 0 0.6rem 0;}}
-  .settings-bar a {{color: {ACCENT}; font-weight: 600; text-decoration: none; white-space: nowrap;
-                     display: inline-block; padding: 0.3rem 0;}}
+  /* settings box: looks like a button so it is obviously clickable */
+  .st-key-settings_box [data-testid="stExpander"] details {{border: 2px solid {ACCENT}; border-radius: 8px;
+                                                           background: #f3f8fe;}}
+  .st-key-settings_box [data-testid="stExpander"] summary {{font-weight: 600; color: {INK}; min-height: 44px;}}
+  .st-key-settings_box [data-testid="stExpander"] summary:hover {{background: #e7f1fb;}}
+  /* section picker: stays at the top while scrolling */
+  .st-key-nav {{position: sticky; top: 0; z-index: 60; background: #fcfcfb; padding: 0.3rem 0;}}
+  .st-key-nav button {{min-height: 44px;}}
   @media (max-width: 1024px) {{
     .block-container {{padding-left: 1.2rem; padding-right: 1.2rem;}}
     .action-title {{font-size: 1.6rem;}}
@@ -274,6 +278,9 @@ settings_label = (
 )
 
 with controls_area:
+    st.caption("👇 Try it: change the client's priorities or company size and watch the recommendation update.")
+    settings_box = st.container(key="settings_box")
+with settings_box:
     with st.expander(settings_label, expanded=False):
         p_col, s_col = st.columns(2)
         with p_col:
@@ -414,8 +421,14 @@ with header_area:
 with results_heading:
     st.markdown('<div class="section">Explore the results</div>', unsafe_allow_html=True)
 
-tab_comp, tab_cost, tab_cat, tab_answers, tab_method = st.tabs(
-    ["Comparison", "Score vs cost", "By category", "Answers", "Method & limits"])
+VIEWS = ["Comparison", "Score vs cost", "By category", "Answers", "Method & limits"]
+with st.container(key="nav"):
+    if hasattr(st, "segmented_control"):        # tap-friendly buttons that wrap on small screens
+        view = st.segmented_control("Section", VIEWS, default=VIEWS[0], key="view",
+                                    label_visibility="collapsed")
+    else:                                        # fallback for older Streamlit versions
+        view = st.radio("Section", VIEWS, horizontal=True, key="view", label_visibility="collapsed")
+view = view or VIEWS[0]                          # tapping the selected button again clears it
 
 
 def status(row):
@@ -433,7 +446,7 @@ def status(row):
 
 
 # ---------------- Comparison ----------------
-with tab_comp:
+if view == "Comparison":
     exhibit("All vendors side by side (click a column header to sort)")
     table = card.copy()
     table["Status"] = table.apply(status, axis=1)
@@ -478,7 +491,7 @@ with tab_comp:
         + f". Source: own evaluation via OpenRouter, {TEST_PERIOD}.")
 
 # ---------------- Score vs cost ----------------
-with tab_cost:
+if view == "Score vs cost":
     exhibit("What you get vs what you pay")
     data = card.copy()
     data["Cost label"] = data["Cost per year ($)"].apply(lambda v: "free only - no paid service ⚠" if pd.isna(v)
@@ -514,7 +527,7 @@ with tab_cost:
     source("Blue: recommended vendor. ⚠ Free-only models have no paid service, so no cost and no service guarantee.")
 
 # ---------------- By category ----------------
-with tab_cat:
+if view == "By category":
     exhibit("Average score by task category (%)")
     by_cat = (scores.dropna(subset=["score"])
               .pivot_table(index="category", columns="name", values="score", aggfunc="mean"))
@@ -529,7 +542,7 @@ with tab_cat:
            "⚠ = free only, no service guarantee.")
 
 # ---------------- Answers ----------------
-with tab_answers:
+if view == "Answers":
     exhibit("Compare two models on the same task")
     f1, f2 = st.columns([1, 2])
     category = f1.selectbox("Category", ["All"] + sorted(tasks["category"].unique().tolist()))
@@ -569,7 +582,7 @@ with tab_answers:
                     st.markdown(res.iloc[0]["response"])
 
 # ---------------- Method & limits ----------------
-with tab_method:
+if view == "Method & limits":
     l, r = st.columns(2)
     with l:
         exhibit("Method")
