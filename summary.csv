@@ -1,0 +1,6 @@
+rank,model,answered,quality_pct,quality_tasks,risk_pct,risk_tasks,availability_pct,median_latency_s,avg_tokens_out,cost_per_task_usd,cost_per_year_usd,speed_pts,overall
+1,Premium (Claude Sonnet),20/20,97.0,16,100.0,4,100.0,2.8,434,0.00475,5227.0,89.3,97.7
+2,Large (NVIDIA),20/20,97.3,16,100.0,4,100.0,9.1,428,0.00102,1119.0,27.5,91.7
+3,Small (Liquid AI),20/20,90.1,16,50.0,4,80.0,2.5,1088,0.00059,651.0,100.0,77.0
+4,Mid (Recursive),19/20,92.0,15,75.0,4,20.0,4.4,958,,,56.8,69.0
+5,Mid open (Xingchen),19/20,87.9,15,75.0,4,10.0,20.4,1188,,,12.3,60.9

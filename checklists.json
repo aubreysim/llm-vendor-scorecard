@@ -1,0 +1,100 @@
+{
+  "_about": "Fixed checklists, written from the answer keys in tasks.csv. Every model is judged against the same points. Format and length are checked separately, as one extra point. Pass/fail tasks (T17, T19, T20) and auto-checked tasks (T06, T09, T11, T12) are not listed here.",
+  "T01": [
+    "Revenue up 8% to CHF 412 million, driven by pharma contract logistics",
+    "EBIT margin up from 6.1% to 7.4%, thanks to the Basel automated warehouse",
+    "Road freight revenue down 3% (lower automotive volumes and/or rising driver wages)",
+    "CHF 38 million investment, including warehouse automation and a new transport management system (go-live mid-2026)",
+    "Outlook: 4-6% revenue growth, Austria entry via acquisition, and proposed dividend of CHF 2.40",
+    "No invented figures (all numbers come from the excerpt)"
+  ],
+  "T02": [
+    "Vendor C dropped (no Swiss data centre)",
+    "Thomas sends the RFP to vendors A and B by 14 Nov",
+    "Extra CHF 50k for consulting support approved by the CFO",
+    "Lena updates the business case by 21 Nov",
+    "Go-live date stays 1 March",
+    "Maria books the steering committee by 7 Nov",
+    "Training is not presented as a decision (leaving it out, or showing it as open/postponed, both count as covered)"
+  ],
+  "T03": [
+    "Many DACH manufacturers pilot generative AI (62%)",
+    "Few have moved to production (14%)",
+    "Main barriers: unclear ROI, data protection/hosting, lack of skills",
+    "Success factors: dedicated budget, executive sponsor, clear data rules",
+    "Outlook: the pilot-to-production gap is expected to narrow",
+    "Risk of 'pilot fatigue' for firms without governance"
+  ],
+  "T04": [
+    "Theme: difficult setup / onboarding / implementation",
+    "Theme: pricing concerns (expensive, price increases, unclear pricing)",
+    "Theme: strong, fast, helpful customer support"
+  ],
+  "T05": [
+    "Strength: reputation for reliability and/or dangerous-goods expertise",
+    "Strength: long-term key client contracts and/or own fleet",
+    "Weakness: client concentration (60% of revenue from 3 clients)",
+    "Weakness: ageing fleet (average 9 years)",
+    "Weakness: no online booking or digital tracking",
+    "Opportunity: growing cross-border e-commerce into Germany/Austria",
+    "Low-emission rules from 2027 mentioned (as opportunity or threat)",
+    "Threat: competitors introducing real-time tracking",
+    "Threat: shortage of qualified drivers",
+    "No facts invented beyond the fact sheet"
+  ],
+  "T07": [
+    "Recommends Vendor B",
+    "Explains that Vendor B meets all three requirements (Swiss data, uptime, budget)",
+    "Vendor A ruled out because its data centre is not in Switzerland",
+    "Vendor C ruled out because 99.5% uptime is below the 99.9% requirement"
+  ],
+  "T08": [
+    "Identifies the assumption that the chatbot handles 100% of inquiries from day one",
+    "Explains why it is unrealistic (only a share resolved, adoption ramps up, complex cases still need humans)",
+    "Explains the consequence: the CHF 3.2m saving / removing all 40 agents is overstated"
+  ],
+  "T10": [
+    "Risk: key developer leaving in December / knowledge transfer not planned - owner Stefan",
+    "Risk: vendor interface module may slip 3 weeks - owner Anna",
+    "Risk: limited business-user availability for testing during year-end closing - owner Marco",
+    "No invented additional risks"
+  ],
+  "T13": [
+    "Status: amber",
+    "Data migration 80% done and on track",
+    "Vendor integration delayed by 2 weeks",
+    "Go-live moves from 1 Feb to 15 Feb",
+    "No budget impact",
+    "Explicitly asks the steering committee to approve the new go-live date (a clear decision request, not just information)"
+  ],
+  "T14": [
+    "Explains in plain words that the finance system's data moves to a provider-managed cloud service",
+    "No more buying/replacing servers",
+    "Capacity grows automatically when needed (month-end)",
+    "Spending shifts from upfront investments to ongoing operating costs",
+    "About 18% lower cost over five years",
+    "No unexplained jargon (e.g. PaaS, TCO, CapEx, OpEx, ERP)"
+  ],
+  "T15": [
+    "Problem: employees spend about 4 hours a week searching for documents (2,000 employees)",
+    "Pilot: 6 months in two departments",
+    "Pilot cost: CHF 150,000",
+    "Data stays in Switzerland",
+    "Expected benefits / value",
+    "Risks or governance addressed",
+    "Decision request or next steps for the board"
+  ],
+  "T16": [
+    "Question on the current IT landscape / pain points",
+    "Question on strategic priorities and alignment with business goals",
+    "Question on cloud strategy and its constraints (data, regulation)",
+    "Question on IT budget, resources or skills",
+    "Question on digitalising production (OT/IT)",
+    "Question on governance, risks or success measures",
+    "Questions are open-ended and non-leading"
+  ],
+  "T18": [
+    "Identifies Section 2.2",
+    "Quotes or states the rule: client data only in Swiss- or EU-hosted, IT-approved tools"
+  ]
+}

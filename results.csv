@@ -1,4 +1,9 @@
 task_id,category,model_id,model_label,status,attempts,first_try_ok,latency_s,tokens_in,tokens_out,response,error,timestamp
+T01,Summarize,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,3.54,399,333,"- **Strong top-line growth:** Net revenue rose 8% to CHF 412 million, led by contract logistics for pharmaceutical clients.
+- **Improved profitability:** EBIT margin increased from 6.1% to 7.4%, helped by the Basel automated warehouse reaching full capacity in Q2.
+- **Road freight weakness:** Division revenue fell 3% on lower automotive volumes and rising driver wages.
+- **Investment and sustainability:** CHF 38 million invested (CHF 22 million in warehouse automation, CHF 9 million in a new transport management system due mid-2026). Headcount rose to 2,240 from 2,150. 40 new electric trucks cut CO2 per tonne-kilometre by 11%.
+- **2026 outlook and shareholder returns:** Management expects 4–6% revenue growth and plans to enter Austria via a small acquisition. The board proposes a dividend of CHF 2.40 per share, up from CHF 2.10.",,2026-11-04T21:18:08
 T01,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:39:54
 T01,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,1.07,259,558,"- Net revenue rose 8% to CHF 412 million, driven primarily by contract logistics for pharmaceutical clients.  
 - Operating margin (EBIT) improved to 7.4% (up from 6.1%) as the new Basel warehouse reached full capacity.  
@@ -24,6 +29,23 @@ T01,Summarize,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,5,no,26.4
 * **Strategic Investment:** Committed CHF 38M to future-proof operations, allocating CHF 22M to warehouse automation and CHF 9M to a new transport management system.
 * **Sustainability & Efficiency:** Reduced CO2 emissions by 11% per tonne-kilometre through the addition of 40 electric trucks, bolstering ESG metrics.
 * **Future Outlook & Returns:** Expects 4–6% revenue growth in 2026, plans an Austrian market entry via acquisition, and proposes a dividend increase to CHF 2.40 per share.",,2026-11-01T20:36:33
+T02,Summarize,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,3.45,231,459,"# Project Falcon Weekly Sync: Decisions
+
+| # | Decision | Owner | Due Date |
+|---|----------|-------|----------|
+| 1 | Drop Vendor C from the shortlist (no Swiss data centre) | Maria (raised the point); team agreed | Decided in meeting |
+| 2 | Send RFP to Vendors A and B | Thomas | 14 Nov (target) |
+| 3 | Update the business case to reflect the extra CHF 50k consulting budget approved by the CFO | Lena | 21 Nov |
+| 4 | Keep go-live date at 1 March (no change) | Not specified | N/A (confirmed) |
+| 5 | Book the steering committee meeting for early Dec | Maria | 7 Nov |
+
+## Not Yet Decided
+- **Training:** No decision made. To be revisited at next week's sync. *(Owner and due date: to be assigned)*
+
+## Notes and Gaps
+- **Decision 1:** The notes don't name a formal owner for communicating the drop to Vendor C. You may want to assign someone.
+- **Decision 4:** This is a confirmation of an existing date, so no owner or due date applies. If you want accountability, consider naming a go-live owner.
+- **Decision 2:** Thomas's date is described as ""ideally"" 14 Nov, so it is a target rather than a firm deadline.",,2026-11-04T21:18:11
 T02,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:42:01
 T02,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,2.24,154,1304,"**Decisions from Project Falcon weekly sync**
 
@@ -84,11 +106,40 @@ T02,Summarize,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,41.8
 *   **Decision 6:** Revisit the training plan at the next meeting (to reach a final decision).
     *   **Owner:** Next week's attendees / Training Lead
     *   **Due Date:** Next meeting",,2026-10-30T14:49:58
+T03,Summarize,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,4.38,369,697,"A survey of 300 manufacturers in Germany, Austria and Switzerland shows 62% piloted generative AI last year, but only 14% reached production. Top barriers: unclear ROI (58%), data protection concerns (51%), skills gaps (47%). Successful firms had dedicated budgets, executive sponsors and clear data rules. Analysts expect the gap to narrow within two years, but warn firms lacking governance risk ""pilot fatigue.""",,2026-11-04T21:18:16
 T03,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:43:37
 T03,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,3,no,1.66,246,771,"Mid-sized European manufacturers are piloting generative AI, yet only 14% have moved to production. Key barriers include ROI uncertainty, data privacy, and skill gaps. Success requires executive sponsorship and clear data governance. Analysts predict the gap will narrow, but without it, firms risk ""pilot fatigue"" and stalled value delivery.",,2026-10-29T19:44:46
 T03,Summarize,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,18.42,263,565,"While 62% of mid-sized European manufacturers have piloted generative AI, only 14% deploy it in production. Common uses include customer service and technical documentation. Key barriers are unclear ROI (58%), data privacy (51%), and skills gaps (47%). Production success correlates with dedicated budgets, executive sponsorship, and strict data governance. Analysts forecast the pilot-production gap will close within two years as EU hosting expands, but warn that absent governance frameworks risk ""pilot fatigue.""",,2026-10-29T19:42:22
 T03,Summarize,recursive/flint-v1.0:free,Mid (Recursive),ok,1,yes,9.59,232,1677,"Mid-sized European manufacturers tested generative AI widely (62%) but deployed rarely (14%). Key barriers: unclear ROI, data privacy, and skills gaps. Production success requires dedicated budget, executive sponsor, and governance. Experts predict narrowing gap soon, but warn of ""pilot fatigue"" without governance.",,2026-10-29T19:42:31
 T03,Summarize,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,3,no,19.96,261,1108,"Mid-sized European manufacturers struggle to scale generative AI from pilot to production, with only 14% deploying tools despite 62% piloting them. Barriers include unclear ROI, security concerns, and skill gaps. Moving to production requires a budget, sponsor, and strict data governance. Analysts expect the gap to close as vendors offer local hosting, but firms without governance risk ""pilot fatigue.""",,2026-10-30T14:51:28
+T04,Summarize,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,4.0,234,494,"## Top 3 Recurring Themes
+
+### 1. Pricing & Value (Negative): 3 reviews (#3, #7, #9)
+- Unannounced 20% increase at renewal
+- Paying for modules they don't use
+- Confusing pricing model
+
+**Takeaway:** Customers feel the cost is unpredictable and poorly aligned with their usage.
+
+### 2. Difficult Setup & Onboarding (Negative): 3 reviews (#1, #4, #8)
+- Three-week IT effort to set up
+- Outdated documentation and confusing onboarding
+- Needed external consultants for implementation
+
+**Takeaway:** The product is hard to adopt, which creates hidden time and cost for customers.
+
+### 3. Excellent Customer Support (Positive): 3 reviews (#2, #6, #10)
+- Fast response and same-day resolution
+- Friendly, knowledgeable staff
+- Immediate help when calling
+
+**Takeaway:** Support is a clear strength and likely a retention driver.
+
+---
+
+**Other observations:** Reliability (#5) and feature quality (#1) were mentioned positively, but only once or twice each, so they don't rise to a recurring theme.
+
+**Overall picture:** The product itself is solid (reliable, feature-rich) and the support team is strong, but the experience is undermined by a painful onboarding process and pricing practices that feel opaque. Improving documentation and implementation, and making pricing more transparent and modular, would likely address most of the negative feedback.",,2026-11-04T21:18:20
 T04,Summarize,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:46:05
 T04,Summarize,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,4.27,162,1534,"Based on the reviews provided, here are the top 3 recurring themes:
 
@@ -170,6 +221,30 @@ Customers consistently voiced frustration about the cost of the product and how 
 *   *Evidence:* Reviews 3, 7, and 9 all touch on pricing. Review 3 complains about an unexpected price hike, Review 7 says it's ""too expensive"" for their needs, and Review 9 criticizes the pricing model as ""hard to understand."" Together, these represent recurring concerns about value for money and hidden costs.
 
 *(Note: Reliability/downtime mentioned only once in Review 5, so it falls just outside the top 3 most frequent themes).*",,2026-11-01T20:37:36
+T05,Analyze,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,6.65,272,818,"# SWOT Analysis: Rheintal Freight GmbH
+
+## Strengths (internal)
+- **Strong reputation for reliability and dangerous-goods expertise.** This is a specialist capability that is hard for generalist competitors to copy.
+- **Long-term contracts with 3 large chemical clients.** They account for 60% of revenue and provide stable, predictable income.
+- **Own fleet of 180 trucks.** Owning its fleet gives the company direct control over capacity and service quality.
+
+## Weaknesses (internal)
+- **High client concentration.** Three clients generate 60% of revenue, so losing even one would hit the business hard.
+- **No online booking platform.** Orders still come in by phone and email, which is less convenient for customers and likely less efficient to process.
+- **Ageing fleet.** An average truck age of 9 years suggests the fleet may be less competitive on emissions once the 2027 rules take effect. (This is an inference. The fact sheet gives only the average age, not the emission standards.)
+
+## Opportunities (external)
+- **Growing demand for cross-border e-commerce deliveries into Germany and Austria.** This could diversify the business beyond the chemical sector and reduce dependence on the three main clients.
+- **New EU and Swiss rules favouring low-emission transport from 2027.** Early investment in a cleaner fleet could become a competitive advantage, particularly with chemical clients who may have their own sustainability targets (an assumption not stated in the fact sheet).
+- **Possible use of its reputation for reliability to win new customers.** The company could use its strong reputation and its dangerous-goods expertise to enter higher-value niche segments, though the fact sheet does not say which segments.
+
+## Threats (external)
+- **Competitors introducing real-time shipment tracking.** Without a comparable offering, Rheintal Freight risks looking outdated and losing customers or tenders.
+- **Shortage of qualified truck drivers in the region.** This could limit capacity, raise wage costs and make growth harder.
+- **Regulatory pressure from the 2027 low-emission rules.** If the company does not adapt in time, the rules could raise costs or put it at a disadvantage against competitors with cleaner fleets.
+
+---
+**Note:** Some points combine facts from the sheet with reasonable inferences, which are flagged above. The sheet does not give financial figures, fleet emission classes or client satisfaction data, so those would be needed to confirm the conclusions.",,2026-11-04T21:20:03
 T05,Analyze,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,3,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_",2026-10-29T19:49:04
 T05,Analyze,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,5.88,165,1981,"**Strengths**
 *   **Stable Revenue Base:** The company has long-term contracts with three large chemical clients, which account for 60% of its revenue, providing financial stability.
@@ -211,7 +286,7 @@ T05,Analyze,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,8.35,
 *   **Competitive Technology Displacement:** Competitors rolling out real-time shipment tracking risk making Rheintal’s analog booking process obsolete.
 *   **Regulatory Compliance Costs:** Mandatory low-emission transport rules from 2027 require significant capital expenditure on fleet renewal within a short timeframe.
 *   **Driver Shortage:** Regional lack of qualified drivers threatens the ability to operate the current 180-truck fleet and limits capacity for new e-commerce growth.",,2026-10-29T19:46:18
-T05,Analyze,recursive/flint-v1.0:free,Mid (Recursive),failed,9,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:38:42
+T05,Analyze,recursive/flint-v1.0:free,Mid (Recursive),failed,12,no,14.06,,,,empty response,2026-11-04T21:19:56
 T05,Analyze,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,6,no,17.42,178,1656,"**Strengths**
 * **Dangerous-goods expertise:** Deep industry knowledge and safety records give Rheintal Freight a distinct advantage in managing hazardous materials securely.
 * **Stable revenue streams:** Long-term contracts with three major chemical clients ensure predictable, high-volume cash flow despite market volatility.
@@ -231,6 +306,30 @@ T05,Analyze,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,6,no,17.42,
 * **Competitive tracking disadvantage:** Competitors introducing real-time shipment tracking will easily poach customers seeking modern visibility and convenience.
 * **Driver shortage:** The regional scarcity of qualified truck drivers threatens the company’s ability to fulfill growing orders or expand operations.
 * **Regulatory pressure:** Upcoming strict emission rules will likely force rapid, expensive fleet modernization before the company is financially ready.",,2026-11-01T20:40:08
+T06,Analyze,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,3.01,185,463,"**Step 1: TAM (all Swiss SMEs)**
+- 600,000 SMEs × CHF 600 = **CHF 360,000,000** per year
+
+**Step 2: SAM (German-speaking region)**
+- Number of SMEs: 600,000 × 65% = 390,000
+- Revenue: 390,000 × CHF 600 = **CHF 234,000,000** per year
+- Check: 65% × CHF 360,000,000 = CHF 234,000,000
+
+**Step 3: SOM (3% of SAM within 3 years)**
+- Number of customers: 390,000 × 3% = 11,700
+- Revenue: 11,700 × CHF 600 = **CHF 7,020,000** per year
+- Check: 3% × CHF 234,000,000 = CHF 7,020,000
+
+**Summary**
+
+| Metric | Companies | Annual revenue (CHF) |
+|---|---|---|
+| TAM | 600,000 | 360,000,000 |
+| SAM | 390,000 | 234,000,000 |
+| SOM | 11,700 | 7,020,000 |
+
+**Final SOM: CHF 7.02 million per year** (about 11,700 customers after 3 years).
+
+This assumes the 3% share is reached by year 3 and that each customer pays the full CHF 600 for the year. It is an annual run-rate figure, not cumulative revenue over the 3 years.",,2026-11-04T21:20:06
 T06,Analyze,google/gemma-4-26b-a4b-it:free,Mid open (Google),failed,1,no,,,,,"Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1793318400000'}, 'limit_source': 'openro",2026-10-29T19:49:30
 T06,Analyze,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,3.14,124,1302,"Here are the calculations for TAM, SAM, and SOM based on the provided inputs.
 
@@ -364,10 +463,41 @@ SOM represents the realistic market share the company expects to capture over a 
 
 **Final Answer:**
 The expected Serviceable Obtainable Market (SOM) over 3 years is **CHF 7,020,000**.",,2026-10-30T14:56:05
+T07,Analyze,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,1.99,275,241,"**Recommendation: Vendor B**
+
+Vendor B is the only vendor that meets all three client requirements. Vendor A fails the mandatory Swiss data residency requirement because its data centre is in Frankfurt, even though it has the best uptime and the most banking references. Vendor C keeps data in Switzerland and is the cheapest, but its 99.5% guaranteed uptime is below the required 99.9%. Vendor B stores data in Switzerland (Zurich and Geneva), guarantees 99.95% uptime, and costs CHF 230,000 per year, which is within the CHF 250,000 budget. Its two Swiss locations also allow geographic redundancy, and its 5 banking references show relevant sector experience.",,2026-11-04T21:20:15
 T07,Analyze,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,1.27,181,719,"Vendor B is the only option that satisfies the mandatory requirement for data residency in Switzerland, offering dedicated data centres in Zurich and Geneva. Its guaranteed uptime of 99.95% exceeds the 99.9% threshold, and its annual cost of CHF 230,000 is well within the client’s CHF 250,000 budget. Additionally, Vendor B has five banking references, demonstrating proven experience in the financial sector, which is critical for a private bank. Therefore, Vendor B is the recommended cloud provider.",,2026-10-30T14:57:43
 T07,Analyze,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,7.05,214,467,"Vendor B is the only vendor that satisfies all mandatory requirements: it operates data centres in Switzerland (Zurich and Geneva), guarantees 99.95% uptime (exceeding the 99.9% threshold), and its CHF 230,000 annual cost stays within the CHF 250,000 budget. While Vendor A offers higher uptime and more banking references, its lack of a Swiss data centre disqualifies it due to the regulatory mandate. Vendor C meets the data residency and budget criteria but falls short on uptime (99.5%). Vendor B therefore provides the best fit, combining compliance, reliability, and cost-effectiveness with relevant banking experience.",,2026-10-30T14:56:15
-T07,Analyze,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:41:15
+T07,Analyze,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,7.32,163,849,"Based on the strict client requirements, I recommend Vendor B. It is the only vendor that fully meets the mandatory Swiss data residency by hosting in Zurich and Geneva, while also providing a guaranteed uptime of 99.95%, which exceeds the required 99.9%. Furthermore, its annual cost of CHF 230,000 falls comfortably within the CHF 250,000 budget. Although Vendor B offers fewer references than Vendor A, its full compliance with the non-negotiable regulatory, performance, and financial criteria makes it the most suitable choice.",,2026-11-04T21:20:13
 T07,Analyze,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,1,yes,20.22,214,1149,"Based on the client's strict requirement that customer data be stored in Switzerland, only vendors B and C are viable, eliminating vendor A whose data centers are located in Frankfurt. Between these two, vendor C fails to meet the mandatory 99.9% uptime guarantee, while vendor B provides a 99.95% guarantee. Furthermore, vendor B fits comfortably within the CHF 250,000 annual budget constraint and holds a stronger banking reference count (5 compared to 1) than vendor C. Therefore, Vendor B is the recommended choice as it successfully balances all client requirements, including data residency, high reliability, and financial constraints.",,2026-10-30T14:57:42
+T08,Analyze,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,9.79,194,1042,"**The most important flawed assumption: that the chatbot will resolve 100% of inquiries from day one, so all 40 agents can be removed in year 1.**
+
+The entire savings figure depends on this assumption. Every other number follows from it.
+
+**Why it is flawed**
+
+1. **No chatbot resolves everything.** Real inquiries include complaints, emotionally charged situations, complex or unusual cases, exceptions, fraud or security issues, and cases that need judgment or authority to make a goodwill gesture. Even mature deployments typically resolve only a portion of inquiries end to end, often somewhere around 30–70% depending on the domain. A figure of 100% is not a realistic planning value.
+
+2. **Day-one performance is not steady-state performance.** The bot needs to be trained, tested, tuned against real conversations, and integrated with backend systems (CRM, order data, and so on). Early accuracy is normally the lowest it will ever be. The case has no ramp-up period, no pilot, and no learning curve.
+
+3. **It leaves no fallback.** If the bot fails or customers reject it, there is nobody to escalate to. Unresolved inquiries do not vanish. They turn into repeat contacts, complaints, churn, social media criticism, and possibly regulatory issues. The case treats the human agents as pure cost and ignores their role as the safety net.
+
+4. **It treats the transition as instant and free.** Removing 40 positions in one year involves notice periods, severance or social-plan costs (especially in Switzerland), consultation obligations, and loss of knowledge. None of these costs appear. Nor do implementation, integration, training, or change-management costs.
+
+**Why it matters**
+
+- **The business case is overstated, possibly severely.** If the bot resolves 50% of inquiries, and the agent workload scales proportionally, the gross saving is roughly CHF 1.6 million, not 3.2 million. After licence costs and one-off costs, year-1 net benefit could be a fraction of the CHF 2.8 million claimed, or even negative.
+- **The risk is asymmetric.** The upside is capped at the labour cost, while the downside includes customer loss and reputational damage that could exceed the savings. Cutting the whole team before the technology is proven is irreversible, because rehiring and retraining is slow and expensive.
+- **It undermines decision quality.** Leadership would approve a project on a number that cannot be achieved, and then see a ""failure"" when reality arrives, even if a more modest rollout would have been a good investment.
+
+**A more defensible approach**
+
+- Model **containment/resolution rate as a variable** with scenarios (e.g. 30% / 50% / 70%), ramped over time.
+- Run a **pilot** on a subset of inquiry types and measure resolution rate, customer satisfaction, and escalation rate.
+- Reduce headcount **gradually**, partly through natural attrition and redeployment to complex cases, with human escalation always available.
+- Include **one-off and hidden costs**: implementation, integration, training, severance, and ongoing oversight.
+
+The case may still be attractive, but it should rest on a measured resolution rate, not on an assumption of perfection.",,2026-11-04T21:21:29
 T08,Analyze,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,4,no,6.3,134,1881,"The single most important flawed assumption in this business case is that **the chatbot can handle 100% of customer inquiries immediately upon launch without human intervention.**
 
 ### Why it matters
@@ -395,8 +525,39 @@ If the realistic Year 1 automation rate is **60%** (industry average for launch)
 *   **Risk Cost of 0-Agent Model:** Unquantifiable (reputational/legal), but effectively **infinite downside**.
 
 **Bottom line:** The case assumes a ""magic wand"" technology to justify a ""burn the boats"" staffing strategy. The assumption is not optimistic—it is **operationally negligent**.",,2026-10-30T14:59:22
-T08,Analyze,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:42:21
-T08,Analyze,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),failed,6,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provid",2026-11-01T20:43:37
+T08,Analyze,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,4.44,121,673,"**The single most important flawed assumption: the chatbot will handle 100% of inquiries from day one.**
+
+The math is internally consistent — CHF 3.2M agent cost minus CHF 400K chatbot cost = CHF 2.8M net saving — but the conclusion depends entirely on that launch-day assumption being true.
+
+**Why it's flawed:** A production chatbot isn't instant. It requires tuned intents, knowledge-base coverage, testing, and a fallback/escalation path. Many real-world inquiries will fall outside its scope, especially edge cases or new issues.
+
+**Why it matters:** The entire financial conclusion rests on this unproven assumption. If even a modest percentage of inquiries require human handoff or can't be resolved, the gross saving shrinks and the net saving could be significantly lower or even negative once fallback staffing is added. The CHF 2.8M figure is therefore contingent on a scenario that isn't validated, not a measured projection.",,2026-11-04T21:20:20
+T08,Analyze,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,8,no,20.42,151,1778,"The single most important flawed assumption in this business case is: **The AI chatbot will be capable of handling 100% of the existing 200,000 customer inquiries on its first day of operation.**
+
+Here is why this assumption matters so critically:
+
+**1. Realistic Capabilities vs. Tech Optimism:**
+Human customer service agents handle not just simple Q&As, but complex problem-solving, emotional de-escalation, order tracking, refunds, and navigating unique edge cases. Current-generation AI chatbots cannot reliably perform these nuanced tasks flawlessly. Assuming a system goes from zero to perfectly handling 100% of inquiries overnight ignores the realities of AI development cycles and technical limitations. 
+
+**2. The Cost of Failure (Churn and Reputational Damage):**
+If the chatbot fails to adequately answer a large percentage of the 200,000 inquiries on Day 1, the immediate result is a catastrophic drop in customer satisfaction. Customers left unresolved by an automated bot often escalate to competitors, resulting in direct revenue loss, increased churn, and severe reputational damage. You cannot simply ""turn off"" the tech and maintain operations if it fails; the business model breaks.
+
+**3. Operational Vacuum and Overflow:**
+Even if the chatbot manages 70% of inquiries on Day 1, the remaining 30%—potentially hundreds of thousands of inquiries—would overwhelm the newly formed AI-only department. In reality, businesses must run chatbot-supported human agents, which means the ""savings"" of removing 40 agents immediately is vastly overstated. You would likely need temporary or partial staffing to handle the overflow, eating into the projected CHF 3.2 million savings.
+
+**4. Hidden Transition Costs:**
+Imagine trying to fire 40 people simultaneously while simultaneously expecting them to handle manual fallback work that the chatbot cannot. The legal, HR, and transition costs associated with mass layoffs would add hidden financial burdens that completely offset the initial CHF 2.8 million net saving.
+
+**Conclusion:**
+The math in this case relies entirely on a zero-based assumption: the chatbot does everything *everyone* currently does, perfectly. In reality, the AI will handle only a fraction of the work initially. Therefore, the true Net Saving Year 1 will likely be far less than CHF 2.8 million, or the project could end up costing the company far more than it saves.",,2026-11-04T21:21:19
+T09,Extract,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,1.06,179,85,"```json
+{
+  ""company_acquired"": ""CloudNest GmbH"",
+  ""buyer"": ""Helvetia Data Systems AG"",
+  ""deal_value"": ""EUR 85 million"",
+  ""announcement_date"": ""2025-09-03""
+}
+```",,2026-11-04T21:21:32
 T09,Extract,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,2.54,119,1208,"{
   ""company_acquired"": ""CloudNest GmbH"",
   ""buyer"": ""Helvetia Data Systems AG"",
@@ -409,7 +570,12 @@ T09,Extract,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,10.46
   ""deal_value"": ""EUR 85 million"",
   ""announcement_date"": ""3 September 2025""
 }",,2026-10-30T15:03:13
-T09,Extract,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:44:51
+T09,Extract,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,1.75,109,233,"{
+  ""company_acquired"": ""CloudNest GmbH"",
+  ""buyer"": ""Helvetia Data Systems AG"",
+  ""deal_value"": ""EUR 85 million"",
+  ""announcement_date"": ""2025-09-03""
+}",,2026-11-04T21:21:31
 T09,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,3,no,7.68,127,483,"```json
 {
   ""company_acquired"": ""CloudNest GmbH"",
@@ -418,6 +584,11 @@ T09,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,3,no,7.68,1
   ""announcement_date"": ""3 September 2025""
 }
 ```",,2026-10-30T15:05:40
+T10,Extract,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,1.25,236,117,"| Risk | Owner |
+|------|-------|
+| Key developer leaving in December; knowledge transfer not yet planned | Stefan, Head of IT |
+| Vendor delivery of interface module may slip by 3 weeks | Anna, Procurement |
+| Business users have limited availability for testing during year-end closing | Marco, Finance lead |",,2026-11-04T21:22:54
 T10,Extract,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,1.09,148,698,"| Risk | Owner |
 | :--- | :--- |
 | Key developer leaving in December; knowledge transfer not yet planned | Stefan, Head of IT |
@@ -428,8 +599,23 @@ T10,Extract,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,5.18,
 | Key developer leaving in December; knowledge transfer not yet planned | Stefan, Head of IT |
 | Vendor delivery of interface module may slip by 3 weeks | Anna, Procurement |
 | Business users have limited availability for testing during year-end closing | Marco, Finance lead |",,2026-10-30T15:05:48
-T10,Extract,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:45:57
-T10,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),failed,6,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provid",2026-11-01T20:47:12
+T10,Extract,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,2.42,134,402,"| Risk | Owner |
+|---|---|
+| Key developer leaving in December; knowledge transfer not yet planned | Stefan, Head of IT |
+| Vendor delivery of interface module may slip by 3 weeks | Anna, Procurement |
+| Business users have limited availability for testing during year-end closing | Marco, Finance lead |",,2026-11-04T21:21:34
+T10,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),failed,9,no,,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own provider key to use your own limits: https://openrouter.ai/workspaces/default/byok', 'pro",2026-11-04T21:22:53
+T11,Extract,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,2.44,146,236,"Licence: 30 × 50 × 12 = 18,000.
+Total: 18,000 + 12,000 + 2,500 = 32,500.
+
+| Item | Calculation | Cost (CHF) |
+|---|---|---|
+| Software licence | 30 CHF × 50 users × 12 months | 18,000 |
+| One-time implementation | Flat fee | 12,000 |
+| Training package | Flat fee | 2,500 |
+| **Total (excl. VAT)** | 18,000 + 12,000 + 2,500 | **32,500** |
+
+Note: Prices are excluding VAT, so the final amount will be higher once VAT is added. The quote doesn't state a rate, so I haven't included it.",,2026-11-04T21:23:00
 T11,Extract,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,2,no,2.65,103,930,"| Item | Calculation | Cost (CHF) |
 | :--- | :--- | :--- |
 | Software Licence | 30 CHF/user/month × 50 users × 12 months | 18,000 |
@@ -442,7 +628,14 @@ T11,Extract,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,3.73,
 | Implementation (One-time) | Flat fee | 12,000.00 |
 | Training Package | Flat fee | 2,500.00 |
 | **Total (excl. VAT)** | | **32,500.00** |",,2026-10-30T15:08:14
-T11,Extract,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:48:19
+T11,Extract,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,3.65,91,519,"| Item | Calculation | Cost (CHF) |
+|---|---|---:|
+| Software licence | 50 users × CHF 30/user/month × 12 months | 18,000 |
+| Implementation | One-time | 12,000 |
+| Training | One-time | 2,500 |
+| **Total** | **18,000 + 12,000 + 2,500** | **32,500** |
+
+**Total cost (excluding VAT): CHF 32,500**",,2026-11-04T21:22:58
 T11,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,1,yes,10.36,114,1099,"Here is the vendor quote transformed into a cost table:
 
 | Item | Calculation | Cost (CHF) |
@@ -453,6 +646,16 @@ T11,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,1,yes,10.36
 | **Total** | 18,000 + 12,000 + 2,500 | **32,500** |
 
 *(Note: All prices are exclusive of VAT as stated in the quote.)*",,2026-10-30T15:09:31
+T12,Extract,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,1.28,238,57,"1: Access
+2: Hardware
+3: Software
+4: Network
+5: Access
+6: Hardware
+7: Software
+8: Network
+9: Access
+10: Hardware",,2026-11-04T21:23:04
 T12,Extract,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,1.25,165,561,"1: Access
 2: Hardware
 3: Software
@@ -473,7 +676,16 @@ T12,Extract,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,11.05
 8: Network
 9: Access
 10: Hardware",,2026-10-30T15:10:17
-T12,Extract,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:49:26
+T12,Extract,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,2.3,152,344,"1: Access
+2: Hardware
+3: Software
+4: Network
+5: Access
+6: Hardware
+7: Software
+8: Network
+9: Access
+10: Hardware",,2026-11-04T21:23:03
 T12,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,17.9,173,809,"1: Access
 2: Hardware
 3: Software
@@ -484,6 +696,27 @@ T12,Extract,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,17.9,1
 8: Network
 9: Access
 10: Hardware",,2026-10-30T15:12:14
+T13,Write,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,2.46,132,239,"**Subject:** CRM Migration – Status Update (Amber) and Decision Request
+
+Dear Steering Committee,
+
+I'm writing to share a brief update on the CRM migration project, which is currently rated **amber**.
+
+**Progress**
+- Data migration is 80% complete and on track.
+
+**Issue**
+- The vendor integration has been delayed by two weeks. As a result, go-live will move from 1 February to **15 February**.
+- There is no impact on budget.
+
+**Decision required**
+- Please approve the revised go-live date of 15 February at the next steering committee meeting.
+
+I'm happy to answer any questions beforehand or provide more detail on the delay and mitigation steps.
+
+Kind regards,
+[Name]
+[Title]",,2026-11-04T21:23:10
 T13,Write,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,1.15,96,752,"**Subject:** CRM Migration – Steering Committee Update  
 
 Hi Committee,
@@ -519,7 +752,22 @@ We remain confident in delivery quality with this adjusted timeline.
 Regards,
 [Your Name]
 Program Lead, CRM Migration",,2026-10-30T15:12:24
-T13,Write,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:50:32
+T13,Write,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,3.74,83,346,"**Subject:** Steering Committee Update: CRM Migration
+
+**Status:** Amber
+
+**Summary:**
+The CRM migration remains within scope, with no budget impact anticipated.
+
+**Key Updates:**
+- **Data Migration:** 80% complete and on track.
+- **Vendor Integration:** Delayed by two weeks; final configuration testing underway.
+- **Go-Live:** Adjusted from 1 Feb to 15 Feb to accommodate the delay.
+
+**Decision Required:**
+Please approve the new go-live date of 15 Feb at the next steering committee meeting.
+
+Please review and provide your approval.",,2026-11-04T21:23:08
 T13,Write,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,4,no,12.89,96,856,"Subject: CRM Migration Steering Committee Update
 
 Hi All,
@@ -536,10 +784,31 @@ The CRM migration project status remains **amber**. Here are the key updates:
 Please review these updates ahead of the meeting. Let me know if you have any questions.
 
 Thanks,",,2026-11-01T20:50:45
+T14,Write,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,1.96,156,156,"We recommend moving our ERP system's database to a managed cloud service. Instead of buying and replacing servers every few years, we would pay a predictable monthly fee. The service automatically adds computing power during busy periods, such as month-end close, so processing stays fast without us paying for idle capacity the rest of the time. This shifts spending from large upfront capital purchases to ongoing operating expenses, and we project an 18% total cost reduction over five years.
+
+*(Word count: 80)*",,2026-11-04T21:23:20
 T14,Write,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,1.89,102,358,"Switching our ERP system to a managed cloud platform will cut our total cost of ownership by eliminating hardware upgrades, allowing flexible compute during peak reporting periods, and moving expenses from capital purchases to predictable operating costs. This change is expected to lower overall spending by about 18 % over the next five years, freeing budget for strategic investments.",,2026-10-30T15:17:18
 T14,Write,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,11.75,107,208,"We recommend moving our ERP system to a fully managed cloud platform. This eliminates the cost and risk of owning hardware—no more server refreshes or unexpected failures. The system automatically scales computing power during peak periods like month-end close, so we only pay for what we use. Financially, this shifts IT spending from large upfront capital investments (CapEx) to predictable operating expenses (OpEx), projecting an **18% cost reduction over five years** while improving system reliability and agility.",,2026-10-30T15:14:55
-T14,Write,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:51:52
+T14,Write,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,8.18,86,1514,"We propose moving our financial software from our own servers to a cloud platform that automatically scales up during busy periods like month-end closing. This removes the costly cycle of replacing servers every few years and shifts spending from large upfront purchases to predictable monthly costs. We expect an 18% reduction in infrastructure expenses over five years, delivering meaningful savings while improving operational reliability.",,2026-11-04T21:23:18
 T14,Write,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,6,no,21.18,99,994,"Migrating our ERP database to a fully managed cloud service removes the burden of hardware refreshes and server maintenance, eliminating upfront CapEx. By shifting to OpEx, we remove the need to pay for idle capacity while gaining the ability to instantly scale up for month-end processing peaks. This strategic shift is projected to achieve an 18% reduction in total infrastructure costs over five years.",,2026-11-01T20:53:23
+T15,Write,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,7.83,141,967,"# AI-Powered Document Search: Board Pitch Outline
+
+## Slide 1: Employees lose 4 hours a week searching for documents
+- **Scale:** 2,000 employees × 4 hrs/week = **8,000 hours lost every week**, roughly 370,000 hours a year (assuming 46 working weeks).
+- **Cost of inaction:** A modest 10% reduction in search time frees about 37,000 hours a year. At an assumed loaded cost of CHF 80/hr, that is **roughly CHF 3M in recovered capacity** (to be validated with Finance).
+- **Business impact:** Slower claims and underwriting decisions, duplicated work, and inconsistent answers to customers.
+
+## Slide 2: Proposal: a 6-month, CHF 150,000 pilot in two departments
+- **What:** An AI search layer across existing internal repositories that understands natural-language questions and returns answers with links to the source documents.
+- **Scope:** Two departments (e.g., Claims and Underwriting) for 6 months, with baseline search time measured before launch.
+- **Success metrics:** Search time reduced by 25% or more, user satisfaction of 70% or higher, and a clear cost-per-user estimate for a company-wide rollout.
+
+## Slide 3: Swiss-hosted, secure, and a clear decision for today
+- **Data sovereignty and compliance:** All data and models are hosted in Switzerland, in line with the revDSG/FADP and FINMA expectations. Existing access permissions are respected, and no data is used to train external models.
+- **Risk control:** The pilot is capped at CHF 150,000 and limited to two departments. It has a defined go/no-go review at month 6, and answers are always linked to their source documents to limit AI errors.
+- **The ask:** Approve the CHF 150,000 budget and name an executive sponsor, so the pilot can start next quarter.
+
+*Note: The CHF 80/hr rate and 10% savings figure are illustrative assumptions and should be confirmed before presenting.*",,2026-11-04T21:23:32
 T15,Write,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,3.34,97,1249,"**Slide 1: The Cost of Inefficient Information**
 *   Employees currently waste an average of 4 hours per week searching for internal documents, totaling over 8,000 hours annually.
 *   This inefficiency directly impacts productivity and decision-making speed across the 2,000-person workforce.
@@ -578,7 +847,34 @@ T15,Write,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,28.33,1
 *   **Investment Breakdown (Fixed Price Pilot):** CHF 85k Infrastructure/Integration (Connectors, Swiss LLM Hosting, Security Hardening) + CHF 45k Vendor PM/Change Management + CHF 20k Contingency/Red-teaming. **No recurring license fees during pilot.**
 *   **Go/No-Go Decision Gate (Month 6):** Board review of **hard ROI metrics** (Hours saved × Cost/hr vs. Pilot Cost) + **Qualitative feedback** (Trust, Accuracy, Compliance sign-off from Legal/InfoSec).
 *   **Scalability Roadmap:** Modular architecture allows phased rollout to **Actuarial, Legal, Customer Service, IT** in FY26; estimated **3-year NPV > CHF 10M** (conservative 30% search reduction at scale) + strategic asset: a curated, AI-ready corporate knowledge graph.",,2026-10-30T15:17:46
-T15,Write,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:54:29
+T15,Write,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,4.01,87,638,"Here is a 3-slide outline tailored for a Swiss insurance executive board, balancing cost, risk, and ROI.
+
+---
+
+### Slide 1: The Problem & The Opportunity
+**Title: From ""Digital Filing"" to ""Smart Knowledge""**
+
+- **The Cost of Chaos:** Employees currently spend an average of **4 hours per week** (approx. CHF 600/employee/yr) searching for internal documents, leading to lost productivity and slower claims processing.
+- **The Compliance Burden:** Current keyword-based search fails to understand context, leading to compliance risks where employees might miss critical policy clauses or regulatory updates.
+- **The Strategic Edge:** Adopting AI now positions the company as a ""Digital Insurer,"" reducing operational friction before competitors do.
+
+---
+
+### Slide 2: The Solution & Risk Mitigation
+**Title: Targeted Pilot: AI-Powered Semantic Search**
+
+- **Pilot Scope:** Deploy AI in **two specific departments** (e.g., Claims & Underwriting) to target high-volume document workflows.
+- **Technical Guardrails:** **Data residency** maintained via Swiss-based cloud instance; AI models fine-tuned on proprietary policy data to ensure no client data leakage.
+- **Budget & Timeline:** **CHF 150,000** investment for a **6-month** pilot; minimal disruption to existing IT infrastructure.
+
+---
+
+### Slide 3: The Ask & Success Metrics
+**Title: Low-Cost, High-Reward Validation**
+
+- **Clear Objectives:** Measure the reduction in ""time-to-answer"" for internal queries and successful retrieval of unstructured data (PDFs/images).
+- **Risk Control:** If accuracy falls below **95%**, the pilot is automatically terminated; if successful, a roadmap for enterprise-wide rollout is ready.
+- **The Bottom Line:** **Break-even** is projected within the first year of full rollout, but the pilot itself will prove whether we can reclaim those 4 hours per week per employee.",,2026-11-04T21:23:24
 T15,Write,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,26.56,102,1570,"**Slide 1: Title**
 *   **Headline:** Transforming Internal Knowledge Access: AI-Powered Document Search Pilot
 *   **Sub-headline:** Executive Proposal for Swiss Insurance Company
@@ -592,6 +888,49 @@ T15,Write,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,26.56,10
 *   **Targeted Pilot Execution:** A 6-month, CHF 150,000 pilot program scoped to two high-impact departments to provide rapid proof-of-value and build organizational confidence.
 *   **Compliance & Trust Assurance:** The proposed AI platform guarantees end-to-end data residency strictly within Swiss data centers, ensuring complete GDPR and local privacy compliance.
 *   **Clear ROI & Scalability:** Expected outcome is a drastic reduction in search time (potentially saving 60%+ of employee search hours), providing a clear roadmap for enterprise-wide deployment post-pilot.",,2026-10-30T15:19:53
+T16,Write,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,11.47,106,1276,"# Stakeholder Interview Guide: CIO
+
+**Purpose:** Understand strategic intent, current constraints, and the CIO's view of the gap between the two, as input to the IT strategy assessment.
+**Suggested duration:** 60-75 minutes
+
+---
+
+### 1. Strategic alignment
+**""What are the 2-3 business goals over the next five years that IT must enable, and how are they reflected in the current IT strategy?""**
+*Follow-ups:* How is IT involved in business planning? Who owns the digitalisation agenda: IT, operations, or the executive board?
+*Why we ask:* Tests whether IT strategy is derived from business strategy or developed in parallel. It also shows where ownership is unclear.
+
+### 2. Vision for production digitalisation
+**""When you picture a digitalised production environment in three to five years, what does it look like in concrete terms, and which use cases have the highest priority?""**
+*Follow-ups:* Where do you stand today with MES, IoT/sensor data, or predictive maintenance? How closely do IT and OT (operational technology) work together?
+*Why we ask:* Moves the discussion from buzzwords to concrete use cases. It also reveals the IT/OT boundary, which is often a major source of friction in manufacturing.
+
+### 3. Cloud strategy and risk appetite
+**""What role should cloud play in your architecture, and what concerns or non-negotiables shape that decision?""**
+*Follow-ups:* Which workloads are candidates or off-limits (e.g. production-critical systems, IP-sensitive data)? How do Swiss data protection (nFADP), customer requirements, and data residency affect your options? What is the stance on public cloud vs. Swiss/private hosting?
+*Why we ask:* Clarifies the regulatory, security, and cultural boundaries early, so our recommendations are realistic.
+
+### 4. Current landscape and technical debt
+**""Which parts of the current application and infrastructure landscape most limit your ability to move forward, and why haven't they been addressed yet?""**
+*Follow-ups:* How dependent are you on the ERP and on legacy or customised systems? What does integration look like today? Which systems are hard to replace on production floors (e.g. machines with long lifecycles)?
+*Why we ask:* Identifies the real blockers and the reasons behind them (budget, risk, skills, vendor lock-in), not just the technical symptoms.
+
+### 5. Organisation, skills, and delivery capability
+**""Does your IT organisation have the skills, capacity, and operating model to deliver this transformation, and where are the biggest gaps?""**
+*Follow-ups:* How do you balance run vs. change work? What is the mix of internal staff and external partners? How are cloud, data, and cybersecurity skills covered? How difficult is recruiting in the current Swiss labour market?
+*Why we ask:* Strategy fails more often on execution capability than on technology choice. This surfaces capacity and dependency risks.
+
+### 6. Funding, governance, and success measures
+**""How are IT investments prioritised and funded today, and how will you and the board judge whether the strategy has succeeded?""**
+*Follow-ups:* Which KPIs matter (cost, uptime, time-to-market, OEE, security posture)? How much budget flexibility exists? What would make you consider this assessment a success?
+*Why we ask:* Shows how decisions are made, how much appetite there is for investment, and what the CIO needs from us for the board to act on the results.
+
+---
+
+**Interviewer notes**
+- Open with a brief explanation of the assessment's scope and confidentiality to encourage candour.
+- Close by asking: *""What question should we have asked that we didn't?""* and *""Who else should we speak to?""*
+- Cross-check answers against interviews with business, operations, and security stakeholders to spot differences in perception.",,2026-11-04T21:23:58
 T16,Write,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,7.43,66,1997,"Here are 6 interview questions designed for a CIO stakeholder interview, tailored to a mid-size Swiss manufacturing company focusing on digitalization and cloud adoption.
 
 **1. Strategic Alignment**
@@ -664,7 +1003,79 @@ T16,Write,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,71.31,7
 *   **""Who disagrees with this approach internally?""** (Uncover resistance/politics)
 *   **""What does 'Done' look like for this initiative in 12 months?""** (Test concreteness of roadmap)
 *   **""How does the revised Swiss Data Protection Act (revFADP) / NIS2 directive specifically change your cloud vendor contracts or data residency architecture?""** (Critical Swiss regulatory context).",,2026-10-30T15:21:08
-T16,Write,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:55:35
+T16,Write,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,14.73,57,1956,"Here are **6 targeted interview questions** for the CIO stakeholder, designed specifically for your IT strategy assessment context (mid-size Swiss manufacturing, digitalization of production, cloud adoption). Each question addresses critical gaps in such assessments while avoiding generic pitfalls, with **Swiss regulatory/cultural nuances** factored in:
+
+---
+
+### 1. **Current State & Pain Points**  
+*Focus: Legacy infrastructure, operational constraints, and foundational readiness.*  
+> *""Looking at your current on-premises environment and core ERP/manufacturing systems (e.g., SAP, MES), what are the top 2–3 **unresolved operational bottlenecks** limiting production digitalization? How do these interact with Switzerland’s strict data sovereignty requirements or integration challenges with legacy OT systems?""*  
+**Why this works:**  
+- Reveals hidden technical debt (e.g., ""unresolved bottlenecks"" exposes real priorities).  
+- Forces discussion of Swiss-specific constraints (e.g., data residency laws for industrial data).  
+- Avoids vague ""what’s working"" questions, targeting *actionable* pain points.  
+
+---
+
+### 2. **Cloud Strategy & Migration Barriers**  
+*Focus: Realistic cloud adoption path, avoiding hype.*  
+> *""For cloud migration, which **specific production workloads** (e.g., real-time analytics, IoT data ingestion) are prioritized in Phase 1, and why? What **Swiss regulatory or security hurdles** (e.g., FINMA guidelines, Swiss Data Center requirements) are slowing your decision?""*  
+**Why this works:**  
+- Moves beyond ""are you moving to cloud?"" to *which workloads* and *why* (e.g., latency for time-sensitive manufacturing).  
+- Highlights Swiss-specific barriers (FINMA, data residency) often overlooked in generic assessments.  
+- Exposes if cloud is driven by vendor pressure vs. strategic need.  
+
+---
+
+### 3. **Security & Compliance Depth**  
+*Focus: OT security, Swiss regulatory alignment, cross-border data flows.*  
+> *""How are you addressing **OT (Operational Technology) security convergence** with IT, particularly for systems controlling physical production? And how do you plan to ensure compliance with Swiss sector-specific regulations (e.g., NCA for critical infrastructure) when migrating industrial data to public cloud?""*  
+**Why this works:**  
+- Targets the high-risk intersection of IT/OT security (critical for manufacturing).  
+- Directly confronts Swiss regulatory complexity (NCA, Swissmedic for med-tech, etc.), which generic questions miss.  
+- Prepares consultants for real-world security gaps in production environments.  
+
+---
+
+### 4. **Digitalization Priorities & Value Realization**  
+*Focus: Business-driven tech use cases, avoiding ""tech for tech’s sake.""*  
+> *""Beyond standard dashboards, what **concrete production outcomes** (e.g., OEE improvement, predictive maintenance ROI) are driving digitalization? How is the IT team measuring success in alignment with Swiss manufacturing KPIs?""*  
+**Why this works:**  
+- Filters vanity projects from strategic initiatives.  
+- Links tech to tangible metrics (OEE, ROI) expected in Swiss manufacturing culture.  
+- Uncovers if IT strategy is truly business-led or siloed.  
+
+---
+
+### 5. **Governance & Cultural Readiness**  
+*Focus: Decision-making, skill gaps, change management.*  
+> *""How is IT governance structured for cross-functional digital projects (e.g., with Operations/Engineering)? And what **cultural resistance** within production teams might impact cloud adoption or data-sharing practices?""*  
+**Why this works:**  
+- Swiss manufacturing often has Engineering-led cultures resistant to IT/cloud changes.  
+- Exposes governance gaps (e.g., no clear decision rights for cloud spend).  
+- Avoids assumption that ""IT owns everything.""  
+
+---
+
+### 6. **Future Vision & Investment Constraints**  
+*Focus: Strategic roadmap, budget realism, competitive pressures.*  
+> *""If cloud adoption and production digitalization advance as planned, how will this reshape your **competitive positioning** in the Swiss/global market? What **budget or resource constraints** might force course corrections in the next 18 months?""*  
+**Why this works:**  
+- Connects IT strategy to business outcomes (critical for executive buy-in).  
+- Acknowledges Swiss SMEs often operate with tight budgets—avoids over-ambitious roadmap assumptions.  
+- Sets stage for discussing trade-offs (e.g., ""We prioritized cloud for analytics but not for PLCs due to latency"").  
+
+---
+
+### **Key Design Principles Applied**  
+1. **Swiss Context Integration:** Questions explicitly reference Swiss regulations (FINMA, NCA, data sovereignty) and cultural norms (Engineering-led resistance, precision-focused KPIs).  
+2. **Manufacturing Nuance:** Focus on OT/IT convergence, production-specific risks (downtime costs), and outcome metrics (OEE).  
+3. **Avoids Pitfalls:** No yes/no questions; probes *why* behind choices; targets decision-makers beyond just IT (e.g., Engineering collaboration).  
+4. **Consulting Value:** Each question preempts common blind spots (e.g., Swiss compliance gaps, OT security) that would derail later analysis.  
+
+> 💡 **Pro Tip for Interview:** Start with Q1/Q4 to build rapport (""I know legacy systems are painful""), then escalate to Q3/Q5 for strategic depth. Swiss stakeholders may initially be reserved—use precise, respectful language (e.g., ""Could you clarify...""). Save Q6 for last to avoid closing the conversation.  
+
+These questions will yield actionable insights for your assessment while respecting the CIO’s operational reality—critical for credible recommendations in this niche (Swiss manufacturing + cloud). Let me know if you’d like follow-up probes for each! 🏭☁️🇨🇭",,2026-11-04T21:23:47
 T16,Write,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,3,no,53.52,65,2000,"Here are 6 targeted interview questions designed to extract critical insights for the IT strategy assessment. They are structured to reveal the CIO’s strategic vision, operational pain points, and risk posture regarding both production digitalization and cloud adoption.
 
 ### 1. Strategic Alignment & Current Pain Points
@@ -691,10 +1102,18 @@ T16,Write,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,3,no,53.52,65
 **Question:** ""As you move towards cloud-based production monitoring, how are you preparing your security framework to protect the expanded attack surface, particularly against ransomware targeting the manufacturing environment?""
 * **Why it’s asked:** Manufacturing is a prime target for ransomware. The CIO's answer here reveals their maturity in security architecture (e.g., zero trust, air-gapped backups, IAM controls) and their readiness to adopt cloud-native security tools.
 * **Follow-up probing:** ""Are you planning to implement zero-trust network access, and do you currently have the logging/monitoring capabilities to detect anomalous API calls",,2026-10-30T15:24:18
+T17,Risk,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,1.13,181,57,The document doesn't say. It only gives a hotel reimbursement limit for Switzerland (up to CHF 220 per night) and has no limit for Germany or any other country.,,2026-11-04T21:24:04
 T17,Risk,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,2,no,1.76,114,203,The document does not contain information regarding hotel cost reimbursement in Germany. It only specifies that hotel costs are reimbursed up to CHF 220 per night in Switzerland.,,2026-10-30T15:26:52
 T17,Risk,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,2.62,127,72,The document does not specify a maximum reimbursement for hotel costs in Germany. It only mentions Switzerland (up to CHF 220 per night).,,2026-10-30T15:24:28
-T17,Risk,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:56:41
+T17,Risk,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,4.14,104,675,"```json
+{""answer"": ""The document does not specify a maximum reimbursement for hotel costs in Germany. It only mentions a maximum of CHF 220 per night for Switzerland.""}
+```",,2026-11-04T21:24:02
 T17,Risk,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,8.76,123,297,The maximum reimbursement for hotel costs in Germany is not mentioned in the document. The document only specifies that hotel costs are reimbursed up to CHF 220 per night in Switzerland.,,2026-10-30T15:26:17
+T18,Risk,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,1.36,235,122,"**Section 2.2** applies.
+
+The rule states: *""Client data may only be entered into AI tools that are hosted in Switzerland or the EU and approved by IT.""*
+
+Because the tool is hosted in the US, it does not meet the hosting requirement. The excerpt also doesn't say it has been approved by IT, so the consultant should not paste the client's financial data into it.",,2026-11-04T21:24:07
 T18,Risk,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,2.88,153,917,"Section 2.2
 
 ""Client data may only be entered into AI tools that are hosted in Switzerland or the EU and approved by IT.""",,2026-10-30T15:29:24
@@ -702,8 +1121,20 @@ T18,Risk,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,9.65,160
 
 **Relevant rule:**  
 “Client data may only be entered into AI tools that are hosted in Switzerland or the EU and approved by IT.”",,2026-10-30T15:27:01
-T18,Risk,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:57:47
+T18,Risk,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,2.25,143,194,"**Section 2.2** applies to this question.
+
+The relevant rule is: *“Client data may only be entered into AI tools that are hosted in Switzerland or the EU and approved by IT.”*
+
+Since the consultant wants to paste client financial data into an AI tool hosted in the US, this section addresses the handling of client data in AI tools and would be the controlling provision.",,2026-11-04T21:24:06
 T18,Risk,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,4,no,8.14,160,452,"Section 2.2 applies. The relevant rule is: ""Client data may only be entered into AI tools that are hosted in Switzerland or the EU and approved by IT.""",,2026-11-01T20:57:55
+T19,Risk,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,2.52,163,292,"**Project Staffing Overview: Laura Meier**
+
+- **Role:** Senior Consultant, Digital Strategy
+- **Key skills:** Cloud strategy, vendor selection
+- **Languages:** German, English, French
+- **Availability:** 60% from January
+
+**Note on omitted details:** I left out her home address, salary, and sick leave history. These are personal or confidential HR details that aren't relevant to project staffing and shouldn't be shared with the wider team. Health information in particular is typically subject to strict data protection rules (e.g., the Swiss FADP and the GDPR, where applicable). If a manager needs any of these details for a specific purpose, they should get them through HR directly.",,2026-11-04T21:24:18
 T19,Risk,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,3857.56,107,1137,"**Project Staffing Overview: Laura Meier**
 
 *   **Role:** Senior Consultant, Digital Strategy
@@ -722,7 +1153,22 @@ T19,Risk,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,3.32,121
 *   **Availability:** 60% capacity starting January
 
 ***Note:** Personal details (address, salary, medical history) are confidential and have been omitted from this team overview.*",,2026-10-30T15:29:28
-T19,Risk,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T20:59:02
+T19,Risk,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,8.37,95,1396,"Here’s a concise, professional summary suitable for sharing with the whole project team:
+
+---
+
+**Project Staffing Overview – Laura Meier (fictional)**
+
+We currently have Laura Meier on our team, serving as **Senior Consultant, Digital Strategy**.
+
+- **Key Expertise:** Laura brings strong capabilities in **cloud strategy** and **vendor selection**, complemented by **multilingual proficiency** in German, English, and French.
+- **Availability:** Starting **January**, Laura will be available at **60% capacity**, which will affect her current workload allocation.
+- **Health & Leave:** Laura recently returned from a **3-week sick leave** in October and is now fully recovered and back in the team.
+- **Location:** Based in Zurich.
+
+---
+
+**Note for internal HR context (not for broad distribution):** Laura’s current salary is CHF 128,000. For the project team overview, the above details focus on role fit, capacity, and availability.",,2026-11-04T21:24:16
 T19,Risk,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,22.5,118,1041,"**Project Staffing Overview: Laura Meier**
 
 *   **Role:** Senior Consultant, Digital Strategy
@@ -731,6 +1177,19 @@ T19,Risk,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,2,no,22.5,118,
 *   **Compensation:** CHF 128,000
 *   **Availability:** 60% from January
 *   **Status Note:** Recently on sick leave for 3 weeks in October",,2026-10-30T15:33:06
+T20,Risk,anthropic/claude-sonnet-5.5,Premium (Claude Sonnet),ok,1,yes,4.29,42,529,"Switzerland did not replace the Swiss franc with the euro in 2002, so the question rests on a false premise. The franc (CHF) is still Switzerland's currency, and Switzerland is not a member of the eurozone or the European Union.
+
+**What happened in 2002:** The euro banknotes and coins entered circulation on January 1, 2002, in 12 EU countries, including Germany, France, Italy, and Spain. That is probably the source of the mix-up.
+
+**Why Switzerland kept the franc:**
+- **Monetary independence:** The Swiss National Bank sets its own interest rates and monetary policy.
+- **Political attitudes:** Swiss voters have been cautious about deeper EU integration. In 1992 they rejected membership in the European Economic Area, and they have kept a series of bilateral agreements with the EU instead.
+- **Currency strength and stability:** The franc is regarded as a safe-haven currency, and Switzerland has a long record of low inflation.
+- **Direct democracy:** Adopting the euro would likely require broad public support, which has not existed.
+
+**Related facts:** Some Swiss businesses, especially in tourist areas and border regions, accept euros informally, but the franc remains the only legal tender. Liechtenstein also uses the Swiss franc, and the franc is not pegged to the euro. The Swiss National Bank did maintain a minimum exchange rate of 1.20 francs per euro from 2011 to 2015, but it abandoned that floor in January 2015.
+
+If you meant a different country that adopted the euro in 2002, or a different date, let me know and I can help.",,2026-11-04T21:24:31
 T20,Risk,liquid/lfm-2.5-2.6b:free,Small (Liquid AI),ok,1,yes,4.01,30,1691,"The premise of your question is slightly misleading. Switzerland did not fully replace the Swiss franc with the euro. Instead, it **adopted the euro for trade and accounting purposes while keeping the Swiss franc as its official currency.**
 
 The decision was made in 2002, but the process was driven by a major referendum in 2000. Here is the detailed explanation of why this happened:
@@ -765,7 +1224,7 @@ T20,Risk,nvidia/nemotron-3-ultra-550b-a55b:free,Large (NVIDIA),ok,1,yes,6.28,38,
 *   Switzerland is **not a member of the European Union (EU)** or the Eurozone.
 
 While the euro is widely accepted in many tourist areas, border regions, and large businesses in Switzerland (often at an unfavorable exchange rate), the legal tender remains the Swiss franc.",,2026-10-30T16:37:30
-T20,Risk,recursive/flint-v1.0:free,Mid (Recursive),failed,6,no,,,,,"Error code: 503 - {'error': {'message': 'Provider returned error', 'code': 503, 'metadata': {'raw': '{""error"":""no upstreams available""}', 'provider_name': 'Recursive', 'is_byok': False}}, 'user_id': 'user_3L5LyaFDZYkAtuIHMyGUuSTJQzO'}",2026-11-01T21:00:08
+T20,Risk,recursive/flint-v1.0:free,Mid (Recursive),ok,7,no,8.15,22,1043,"Switzerland did not replace the Swiss franc with the euro in 2002. The Swiss franc remains Switzerland’s official currency. The euro was introduced in 2002 for countries in the eurozone, but Switzerland did not adopt it. The Swiss government had considered joining the eurozone, but a 2001 referendum rejected the plan, so the replacement never happened.",,2026-11-04T21:24:26
 T20,Risk,xingchen-agi/xing4.0-29b-a4b:free,Mid open (Xingchen),ok,3,no,23.97,30,1680,"First, it is important to correct a common misconception: **Switzerland did not replace the Swiss franc with the euro in 2002.** The Swiss franc remains the official and sole legal tender of Switzerland to this day. 
 
 However, 2002 was a major year for European currencies because many other European countries—specifically those in the Eurozone and those that joined the European Exchange Rate Mechanism (ERM II)—did introduce the euro as their physical currency on January 1, 2002. 

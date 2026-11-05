@@ -110,6 +110,10 @@ with tab_review:
             st.metric("Score", f"{s['score_pct']}%" if s["score_pct"] else "-")
             st.write(f"Method: {s['method']}")
             st.write(f"Reason: {s['reason']}")
+            if s.get("details"):
+                st.markdown("**Checklist**")
+                for item in s["details"].split(" | "):
+                    st.write(("✅ " if item.startswith("OK:") else "❌ ") + item.split(": ", 1)[-1])
             st.write(f"Word count: {s['word_count']}"
                      + (f"  (within limit: {s['word_limit_ok']})" if s["word_limit_ok"] else ""))
 

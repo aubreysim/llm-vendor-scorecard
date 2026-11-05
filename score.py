@@ -1,8 +1,9 @@
 """
 score.py - grades every answer in results.csv and saves scores to scores_v2.csv.
 
-Version 2 (2 Nov): the judge now CHECKS instead of RATES. It marks each required
-point in the answer key as covered / missing, plus one check for format and
+Version 2 (2-4 Nov): the judge now CHECKS instead of RATES. Each answer is checked
+against a FIXED checklist per task (checklists.json, written from the answer keys),
+so every model is judged on exactly the same points, plus one check for format and
 length. Score = share of checks passed. (Version 1 asked for a 1-5 rating and
 agreed with the human check on only 2 of 5 cases; its scores stay in scores.csv.)
 
@@ -25,11 +26,12 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 # ---------- Settings you may change ----------
-TEST_MODE = True       # True = only score the first 3 answers that need the judge
+TEST_MODE = False      # True = only score the first 3 answers that need the judge
 MAX_TOKENS = 4000      # judge is a "thinking" model: needs room to reason AND reply
 MAX_ATTEMPTS = 3
 WAIT_SECONDS = 30
 SCORES_FILE = "scores_v2.csv"   # version 1 results stay in scores.csv
+RESCORE_TASKS = []   # e.g. ["T18"]: re-score these tasks even if already scored
 # ---------------------------------------------
 
 # Expected numbers for numeric tasks (score = share of numbers found)
@@ -42,8 +44,16 @@ WORD_LIMITS = {"T03": 60, "T13": 150, "T14": 100}
 
 FIELDS = [
     "task_id", "category", "model_id", "model_label", "method",
-    "score_pct", "reason", "word_count", "word_limit_ok", "timestamp",
+    "score_pct", "reason", "details", "word_count", "word_limit_ok", "timestamp",
 ]
+
+# Fixed checklists per task (same points for every model)
+CHECKLISTS = {}
+if os.path.exists("checklists.json"):
+    with open("checklists.json", encoding="utf-8") as f:
+        CHECKLISTS = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
+else:
+    print("Note: checklists.json not found - the judge will split the answer key itself.")
 
 load_dotenv()
 client = OpenAI(
@@ -68,7 +78,7 @@ if os.path.exists(SCORES_FILE):
     with open(SCORES_FILE, encoding="utf-8") as f:
         for row in csv.DictReader(f):
             # re-check failed judge calls and answers that were missing last time
-            if row["method"] not in ("judge_error", "no_answer"):
+            if row["method"] not in ("judge_error", "no_answer") and row["task_id"] not in RESCORE_TASKS:
                 scores[(row["task_id"], row["model_id"])] = row
 
 
@@ -167,9 +177,24 @@ def parse_judge_reply(content, needed_key):
 def judge(task, answer, limit_ok=None):
     """limit_ok: None if the task has no word limit, else True/False from our own word count."""
     is_pass_fail = task["grading_type"] == "pass_fail"
+    checklist = CHECKLISTS.get(task["id"])
     if is_pass_fail:
         instructions = ('Decide PASS or FAIL using the criteria. Reply with JSON only: '
                         '{"pass": true or false, "reason": "one short sentence"}')
+    elif checklist:
+        numbered = "\n".join(f"{i}. {point}" for i, point in enumerate(checklist, 1))
+        instructions = (
+            f'Grade with this FIXED CHECKLIST of {len(checklist)} required points:\n{numbered}\n\n'
+            'For each point, in the same order, decide whether the answer covers it (true/false). '
+            'Different wording is fine if the meaning is the same, but mark a point covered ONLY '
+            'if the answer states it explicitly. Implied, vague or partial mentions count as false.\n'
+            'Then decide whether the answer follows the format and length asked for in the '
+            'TASK INSTRUCTION (format_ok true/false).\n'
+            'Do NOT deduct for anything outside this checklist and the instruction.\n'
+            f'Reply with JSON only, with exactly {len(checklist)} values in "covered": '
+            '{"covered": [true, false, ...], "format_ok": true, '
+            '"reason": "one short sentence naming what is missing, if anything"}'
+        )
     else:
         instructions = (
             'Grade with a checklist, not an overall impression.\n'
@@ -202,27 +227,42 @@ def judge(task, answer, limit_ok=None):
                 temperature=0,
             )
             content = (r.choices[0].message.content or "") if r.choices else ""
-            data = parse_judge_reply(content, "pass" if is_pass_fail else "points")
-            if data is not None and (is_pass_fail or data.get("points")):
+            needed = "pass" if is_pass_fail else ("covered" if checklist else "points")
+            data = parse_judge_reply(content, needed)
+            valid = data is not None and (
+                is_pass_fail
+                or (checklist and isinstance(data.get("covered"), list)
+                    and len(data["covered"]) == len(checklist))
+                or (not checklist and data.get("points"))
+            )
+            if valid:
                 reason = str(data.get("reason", ""))[:200]
                 if is_pass_fail:
-                    return (100 if str(data.get("pass")).lower() == "true" else 0), reason, None
-                points = data["points"]
-                covered = sum(1 for p in points if str(p.get("covered")).lower() == "true")
+                    return (100 if str(data.get("pass")).lower() == "true" else 0), reason, None, ""
+                if checklist:
+                    flags = [str(v).lower() == "true" for v in data["covered"]]
+                    details = " | ".join(f"{'OK' if ok else 'MISSING'}: {p}" for p, ok in zip(checklist, flags))
+                else:
+                    flags = [str(p.get("covered")).lower() == "true" for p in data["points"]]
+                    details = " | ".join(f"{'OK' if str(p.get('covered')).lower() == 'true' else 'MISSING'}: "
+                                         f"{p.get('point', '')}" for p in data["points"])
+                covered = sum(flags)
                 format_ok = str(data.get("format_ok")).lower() == "true"
                 if limit_ok is False:          # our own word count overrules the judge
                     format_ok = False
-                pct = round(100 * (covered + format_ok) / (len(points) + 1))
-                summary = f"{covered}/{len(points)} points, format {'ok' if format_ok else 'NOT ok'}"
-                return pct, f"{summary} - {reason}", None
+                pct = round(100 * (covered + format_ok) / (len(flags) + 1))
+                summary = f"{covered}/{len(flags)} points, format {'ok' if format_ok else 'NOT ok'}"
+                return pct, f"{summary} - {reason}", None, details
+            if data is not None and checklist:
+                print(f"   ...judge returned the wrong number of checks, asking again")
             # OpenRouter sometimes hides the real error inside an empty response
             hidden = getattr(r, "error", None) or (getattr(r, "model_extra", None) or {}).get("error")
             if hidden:
                 last_error = f"OpenRouter error: {str(hidden)[:200]}"
                 print(f"   ...{last_error}")
                 if "per-day" in last_error.lower() or "per day" in last_error.lower():
-                    return None, last_error, "daily_limit"
-            else:
+                    return None, last_error, "daily_limit", ""
+            elif data is None:
                 finish = r.choices[0].finish_reason if r.choices else "none"
                 snippet = content.strip().replace("\n", " ")[:80] or "(empty)"
                 last_error = f"judge gave no usable JSON (finish: {finish}, reply: {snippet})"
@@ -230,11 +270,11 @@ def judge(task, answer, limit_ok=None):
         except Exception as e:
             last_error = str(e)[:200]
             if "per-day" in last_error.lower() or "per day" in last_error.lower():
-                return None, last_error, "daily_limit"
+                return None, last_error, "daily_limit", ""
         if attempt < MAX_ATTEMPTS:
             print(f"   ...judge busy, retrying in {WAIT_SECONDS}s")
             time.sleep(WAIT_SECONDS)
-    return None, last_error, "error"
+    return None, last_error or "judge gave no usable reply", "error", ""
 
 
 # ---------------- Main loop ----------------
@@ -249,6 +289,7 @@ for row in sorted(results, key=lambda r: (r["task_id"], r["model_id"])):
     words = len(answer.split())
     limit = WORD_LIMITS.get(row["task_id"])
 
+    details = ""
     if row["status"] != "ok":
         method, pct, reason = "no_answer", 0, "model gave no answer"
     elif task["grading_type"] == "numeric":
@@ -263,7 +304,7 @@ for row in sorted(results, key=lambda r: (r["task_id"], r["model_id"])):
         judge_calls += 1
         print(f"Judging {row['task_id']} | {row['model_label']} ... (can take up to a minute)")
         limit_ok = None if not limit else words <= limit
-        pct, reason, problem = judge(task, answer, limit_ok)
+        pct, reason, problem, details = judge(task, answer, limit_ok)
         if problem == "daily_limit":
             print("\nDaily free limit reached. Run again tomorrow - finished scores are kept.")
             break
@@ -279,6 +320,7 @@ for row in sorted(results, key=lambda r: (r["task_id"], r["model_id"])):
         "method": method,
         "score_pct": pct,
         "reason": reason,
+        "details": details,
         "word_count": words,
         "word_limit_ok": "" if not limit else ("yes" if words <= limit else "no"),
         "timestamp": datetime.now().isoformat(timespec="seconds"),

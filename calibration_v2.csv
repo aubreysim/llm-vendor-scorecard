@@ -1,0 +1,9 @@
+task_id,model_label,judge_score,your_view,note
+T15,Mid open (Xingchen),62,Agree with judge,
+T05,Small (Liquid AI),82,Agree with judge,
+T01,Mid (Recursive),71,Agree with judge,
+T13,Large (NVIDIA),100,Agree with judge,not clear that the decision for new date is expected to be given at the meeting
+T08,Large (NVIDIA),100,Agree with judge,clarity on the task: savings must be phased and partial.
+T02,Mid open (Xingchen),75,Agree with judge,
+T16,Mid open (Xingchen),62,Judge too harsh,"I would say it is around 80% coverage because of missing question on IT budget, resource or skills"
+T14,Small (Liquid AI),57,Agree with judge,
