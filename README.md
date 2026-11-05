@@ -10,6 +10,8 @@
 
 ## The recommendation
 
+   📄 **[Read the 2-page recommendation memo (PDF)](docs/recommendation_memo.pdf)**
+
 > **NVIDIA Nemotron delivers near-Claude Sonnet results at about a fifth of the cost.**
 > It matches Claude on quality and risk; Claude's lead comes from speed. Recommended next step: pilot Nemotron on its paid tier, and use Claude where response time matters most.
 
@@ -108,6 +110,7 @@ The results are already in this repo, so you can run step 4 straight away. **Tot
 | `calibration.csv`, `calibration_v2.csv` | Expert review of the judge's scores |
 | `summary.csv`, `summary_by_category.csv` | Scorecard output |
 | `tests/` | Small scripts used to test the API and pick models |
+| `docs/recommendation_memo.pdf` | Two-page recommendation memo for leadership |
 
 ## About
 
