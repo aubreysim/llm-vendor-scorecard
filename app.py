@@ -11,7 +11,7 @@ import pandas as pd
 import streamlit as st
 import yaml
 
-st.set_page_config(page_title="LLM Vendor Scorecard", layout="wide")
+st.set_page_config(page_title="LLM Vendor Scorecard", layout="wide", initial_sidebar_state="collapsed")
 
 SCORES_FILE = "scores_v2.csv" if os.path.exists("scores_v2.csv") else "scores.csv"
 RISK_TASKS = {"T17", "T18", "T19", "T20"}
@@ -70,6 +70,19 @@ st.markdown(f"""
   .kpi-note {{font-size: 0.82rem; color: {INK_2};}}
   .exhibit-title {{font-weight: 700; font-size: 1.05rem; color: {INK}; margin: 0.4rem 0 0.1rem 0;}}
   .source {{font-size: 0.78rem; color: {INK_2}; margin-top: 0.3rem;}}
+  [data-testid="stSidebarCollapsedControl"] {{display: none;}}
+  /* iPad and phone */
+  @media (max-width: 1024px) {{
+    .block-container {{padding-left: 1.2rem; padding-right: 1.2rem;}}
+    .action-title {{font-size: 1.6rem;}}
+  }}
+  @media (max-width: 640px) {{
+    .block-container {{padding-top: 1rem; padding-left: 1rem; padding-right: 1rem;}}
+    .action-title {{font-size: 1.35rem;}}
+    .subtitle {{font-size: 0.88rem;}}
+    .kpi {{margin-bottom: 0.6rem;}}
+    .exec-box {{padding: 0.8rem 0.9rem;}}
+  }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -161,22 +174,31 @@ def build_scorecard(models, results, scores, weights, tasks_per_year):
 
 models, tasks, results, scores = load_data()
 
-# ---------------- Sidebar ----------------
-st.sidebar.markdown("### Client priorities")
-st.sidebar.caption("Move the sliders to see how the ranking changes. Weights are relative.")
-weights = {
-    "quality": st.sidebar.slider("Quality", 0, 100, 40, 5),
-    "risk": st.sidebar.slider("Risk & trust", 0, 100, 30, 5),
-    "availability": st.sidebar.slider("Availability", 0, 100, 20, 5),
-    "speed": st.sidebar.slider("Speed", 0, 100, 10, 5),
-}
-st.sidebar.markdown("### Scale-up scenario")
-st.sidebar.caption("Estimate the annual cost for a client: enter how many people use the AI, "
-                   "how many tasks each runs per day, and working days per year. "
-                   "Annual cost = tasks per year × each model's cost per task.")
-users = st.sidebar.number_input("Users", 10, 100_000, 500, 50)
-tasks_per_day = st.sidebar.number_input("Tasks per user per day", 1, 200, 10, 1)
-days = st.sidebar.number_input("Working days per year", 1, 365, 220, 5)
+# ---------------- Page areas (filled in this order on screen) ----------------
+header_area = st.container()     # title, executive summary, KPI tiles
+controls_area = st.container()   # priorities and scenario (in the page, so they work on phone and iPad)
+
+# ---------------- Controls ----------------
+with controls_area:
+    with st.expander("⚙️  Adjust client priorities and scale-up scenario", expanded=False):
+        p_col, s_col = st.columns(2)       # side by side on laptop/iPad, stacked on phone
+        with p_col:
+            st.markdown("**Client priorities**")
+            st.caption("Move the sliders to see how the ranking changes. Weights are relative.")
+            weights = {
+                "quality": st.slider("Quality", 0, 100, 40, 5),
+                "risk": st.slider("Risk & trust", 0, 100, 30, 5),
+                "availability": st.slider("Availability", 0, 100, 20, 5),
+                "speed": st.slider("Speed", 0, 100, 10, 5),
+            }
+        with s_col:
+            st.markdown("**Scale-up scenario**")
+            st.caption("Estimate the annual cost for a client: how many people use the AI, how many "
+                       "tasks each runs per day, and working days per year. "
+                       "Annual cost = tasks per year × each model's cost per task.")
+            users = st.number_input("Users", 10, 100_000, 500, 50)
+            tasks_per_day = st.number_input("Tasks per user per day", 1, 200, 10, 1)
+            days = st.number_input("Working days per year", 1, 365, 220, 5)
 tasks_per_year = users * tasks_per_day * days
 
 card = build_scorecard(models, results, scores, weights, tasks_per_year)
@@ -204,33 +226,34 @@ else:
     rec = f"<b>Recommend {top['Model']}</b>: highest overall score under the current priorities."
 
 # ---------------- Header ----------------
-st.markdown('<div class="eyebrow">AI vendor evaluation · consulting use cases</div>', unsafe_allow_html=True)
-st.markdown(f'<div class="action-title">{action_title}</div>', unsafe_allow_html=True)
-subtitle = (f"{len(models)} AI models tested on {n_tasks} consulting tasks "
-            f"· answers checked against fixed checklists · {TEST_PERIOD}")
-if value["Model"] != top["Model"] and pd.notna(top["Cost per year ($)"]):
-    subtitle = (f"Within {gap:.0f} points of the top score for ${value['Cost per year ($)']:,.0f} instead of "
-                f"${top['Cost per year ($)']:,.0f} a year · " + subtitle)
-st.markdown(f'<div class="subtitle">{subtitle}</div>', unsafe_allow_html=True)
+with header_area:
+    st.markdown('<div class="eyebrow">AI vendor evaluation · consulting use cases</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="action-title">{action_title}</div>', unsafe_allow_html=True)
+    subtitle = (f"{len(models)} AI models tested on {n_tasks} consulting tasks "
+                f"· answers checked against fixed checklists · {TEST_PERIOD}")
+    if value["Model"] != top["Model"] and pd.notna(top["Cost per year ($)"]):
+        subtitle = (f"Within {gap:.0f} points of the top score for ${value['Cost per year ($)']:,.0f} instead of "
+                    f"${top['Cost per year ($)']:,.0f} a year · " + subtitle)
+    st.markdown(f'<div class="subtitle">{subtitle}</div>', unsafe_allow_html=True)
 
-bullets = [rec]
-if leakers:
-    bullets.append(f"<b>Trust separates the vendors more than quality:</b> {len(leakers)} of {len(models)} "
-                   f"models put salary, address or health data into a team summary "
-                   f"({', '.join(leakers)}).")
-if unreliable:
-    bullets.append(f"<b>Free-only models are not business-ready:</b> {', '.join(unreliable)} answered "
-                   f"under half of the tasks on the first try, with no paid service available.")
-st.markdown('<div class="exec-box"><b>Executive summary</b><ul>'
-            + "".join(f"<li>{b}</li>" for b in bullets) + "</ul></div>", unsafe_allow_html=True)
+    bullets = [rec]
+    if leakers:
+        bullets.append(f"<b>Trust separates the vendors more than quality:</b> {len(leakers)} of {len(models)} "
+                       f"models put salary, address or health data into a team summary "
+                       f"({', '.join(leakers)}).")
+    if unreliable:
+        bullets.append(f"<b>Free-only models are not business-ready:</b> {', '.join(unreliable)} answered "
+                       f"under half of the tasks on the first try, with no paid service available.")
+    st.markdown('<div class="exec-box"><b>Executive summary</b><ul>'
+                + "".join(f"<li>{b}</li>" for b in bullets) + "</ul></div>", unsafe_allow_html=True)
 
-k1, k2, k3, k4 = st.columns(4)
-kpi(k1, "Highest score", top["Model"], f"{top['Overall']:.1f} of 100 points")
-kpi(k2, "Best value", value["Model"],
-    f"${value['Cost per year ($)']:,.0f} per year" if pd.notna(value["Cost per year ($)"]) else "")
-kpi(k3, "Scenario", f"{tasks_per_year/1e6:.1f}m tasks/yr", f"{users:,} users × {tasks_per_day}/day × {days} days")
-kpi(k4, "Scoring reliability", "88%", "7 of 8 AI gradings matched a human check")
-st.write("")
+    k1, k2, k3, k4 = st.columns(4)
+    kpi(k1, "Highest score", top["Model"], f"{top['Overall']:.1f} of 100 points")
+    kpi(k2, "Best value", value["Model"],
+        f"${value['Cost per year ($)']:,.0f} per year" if pd.notna(value["Cost per year ($)"]) else "")
+    kpi(k3, "Scenario", f"{tasks_per_year/1e6:.1f}m tasks/yr", f"{users:,} users × {tasks_per_day}/day × {days} days")
+    kpi(k4, "Scoring reliability", "88%", "7 of 8 AI gradings matched a human check")
+    st.write("")
 
 tab_card, tab_cost, tab_cat, tab_answers, tab_method = st.tabs(
     ["Scorecard", "Score vs cost", "By category", "Answers", "Method & limits"])
@@ -304,12 +327,17 @@ with tab_cost:
     cost_text = alt.Chart(data).mark_text(align="left", dx=6, color=INK, fontSize=12).encode(
         x="Cost bar:Q", y=alt.Y("Model:N", sort=order), text="Cost label:N")
 
-    panel = alt.hconcat(
-        (score_bars + score_text).properties(width=330, height=240, title="Overall score"),
-        (cost_bars + cost_text).properties(width=330, height=240, title="Annual cost"),
-        spacing=30,
-    ).configure_title(anchor="start", fontSize=13, color=INK)
-    st.altair_chart(style_chart(panel), use_container_width=False)
+    # Two charts in columns: side by side on laptop/iPad, stacked on phone; each fits its column width
+    left_chart, right_chart = st.columns(2)
+    with left_chart:
+        st.markdown("**Overall score**")
+        st.altair_chart(style_chart((score_bars + score_text).properties(height=240)),
+                        use_container_width=True)
+    with right_chart:
+        st.markdown("**Annual cost**")
+        cost_axis_labels = alt.Y("Model:N", sort=order, title=None, axis=alt.Axis(labelLimit=200))
+        st.altair_chart(style_chart((cost_bars.encode(y=cost_axis_labels) + cost_text).properties(height=240)),
+                        use_container_width=True)
 
     if value["Model"] != top["Model"] and pd.notna(top["Cost per year ($)"]):
         st.markdown(
