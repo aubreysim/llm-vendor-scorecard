@@ -97,9 +97,30 @@ st.markdown(f"""
   /* keep the tab bar visible while scrolling */
   .stTabs [data-baseweb="tab-list"] {{position: sticky; top: 0; z-index: 50; background: #fcfcfb;
                                       padding-top: 0.3rem;}}
+  .settings-bar {{font-size: 0.85rem; color: {INK}; background: #f3f2ef; border-radius: 6px;
+                   padding: 0.5rem 0.8rem; margin: 0.3rem 0 0.6rem 0;}}
+  .settings-bar a {{color: {ACCENT}; font-weight: 600; text-decoration: none; white-space: nowrap;
+                     display: inline-block; padding: 0.3rem 0;}}
   @media (max-width: 1024px) {{
     .block-container {{padding-left: 1.2rem; padding-right: 1.2rem;}}
     .action-title {{font-size: 1.6rem;}}
+  }}
+  /* phones: tabs wrap onto several lines instead of needing a sideways swipe */
+  @media (max-width: 640px) {{
+    .stTabs [data-baseweb="tab-list"] {{flex-wrap: wrap; row-gap: 0.3rem; column-gap: 0.3rem;
+                                        overflow-x: visible;}}
+    .stTabs [data-baseweb="tab"] {{flex: 1 1 auto; min-height: 44px; padding: 0 0.6rem;
+                                   border: 1px solid {GRID}; border-radius: 6px;}}
+    .stTabs [data-baseweb="tab"][aria-selected="true"] {{background: #e7f1fb; border-color: {ACCENT};}}
+    .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {{display: none;}}
+  }}
+  /* touch screens: bigger targets for help icons, number steppers and buttons (at least 44px) */
+  @media (pointer: coarse) {{
+    [data-testid="stTooltipHoverTarget"], [data-testid="stTooltipIcon"] {{min-width: 44px; min-height: 44px;
+        display: inline-flex; align-items: center; justify-content: center;}}
+    [data-testid="stNumberInputStepDown"], [data-testid="stNumberInputStepUp"] {{min-width: 44px; min-height: 44px;}}
+    .stButton button, .stDownloadButton button {{min-height: 44px;}}
+    [data-testid="stExpander"] summary {{min-height: 44px;}}
   }}
   @media (max-width: 640px) {{
     .block-container {{padding-top: 1rem; padding-left: 1rem; padding-right: 1rem;}}
@@ -242,6 +263,7 @@ controls_area = st.container()
 
 # ---------------- Controls ----------------
 with controls_area:
+    st.markdown('<div id="settings"></div>', unsafe_allow_html=True)   # jump target for "Change settings"
     with st.expander("⚙️  Adjust client priorities and scale-up scenario", expanded=False):
         p_col, s_col = st.columns(2)
         with p_col:
@@ -366,11 +388,24 @@ with header_area:
         kpi(k3, "Tasks per year", f"{tasks_per_year:,}", f"{users:,} users × {tasks_per_day}/day × {days} days",
             HELP["cost"])
     kpi(k4, "Scoring reliability", CALIBRATION[0], CALIBRATION[1], HELP["reliability"])
+    # Tap-friendly definitions (hover tooltips don't work on phones and tablets)
+    with st.expander("ⓘ  What do these numbers mean?", expanded=False):
+        st.markdown(f"""
+- **Overall:** {HELP['overall']}
+- **Quality:** {HELP['quality']}
+- **Risk & trust:** {HELP['risk']}
+- **Availability:** {HELP['availability']}
+- **Speed:** {HELP['speed']}
+- **Cost:** {HELP['cost']}
+- **Scoring reliability:** {HELP['reliability']}
+""")
 
 # ---------------- Results ----------------
 st.markdown('<div class="section">Explore the results</div>', unsafe_allow_html=True)
-st.caption(f"Scenario: {users:,} users × {tasks_per_day} tasks/day × {days} days = "
-           f"**{tasks_per_year:,} tasks per year** · priority mix: {mix}")
+st.markdown(f'<div class="settings-bar"><b>Current settings:</b> {mix} · {tasks_per_year:,} tasks/year '
+            f'({users:,} users × {tasks_per_day}/day × {days} days) · threshold {threshold} pts · '
+            f'knock-out {"on" if knockout else "off"} &nbsp; <a href="#settings">⚙️ Change settings ↑</a></div>',
+            unsafe_allow_html=True)
 
 tab_comp, tab_cost, tab_cat, tab_answers, tab_method = st.tabs(
     ["Comparison", "Score vs cost", "By category", "Answers", "Method & limits"])
@@ -593,7 +628,9 @@ e1.download_button("⬇️  Download current scenario (CSV, opens in Excel)", cs
                    file_name="llm_vendor_scorecard.csv", mime="text/csv", use_container_width=True)
 e2.download_button("⬇️  Download one-page summary (HTML, print to PDF)", summary_html.encode("utf-8"),
                    file_name="llm_vendor_scorecard_summary.html", mime="text/html", use_container_width=True)
-st.caption("To save the summary as PDF: open the downloaded file and use Print → Save as PDF.")
+st.caption("To save the summary as PDF: on a laptop, open the downloaded file and use Print → Save as PDF. "
+           "On iPhone or iPad, open it from the Files app, tap Share → Print, then share or save the "
+           "preview as PDF.")
 
 # ---------------- Footer ----------------
 st.markdown(f'<div class="footer">Built by {AUTHOR} · <a href="{REPO_URL}" target="_blank">Source code and '
